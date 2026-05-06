@@ -1,0 +1,58 @@
+{
+  "name": "lamutuelleseniors",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,css}\" --ignore-path .prettierignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json,css}\" --ignore-path .prettierignore",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "tsx migrations/seed-legal.ts && tsx scripts/run-migrations.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:lighthouse": "lhci autorun",
+    "test:a11y": "playwright test --grep @a11y"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
+    "@tailwindcss/forms": "^0.5.10",
+    "better-sqlite3": "^11.7.0",
+    "framer-motion": "^11.15.0",
+    "marked": "^15.0.6",
+    "nanoid": "^5.0.9",
+    "next": "^15.1.6",
+    "nodemailer": "^7.0.0",
+    "pino": "^9.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "sanitize-html": "^2.14.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@lhci/cli": "^0.14.0",
+    "@playwright/test": "^1.49.1",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^20.17.0",
+    "@types/nodemailer": "^7.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/sanitize-html": "^2.13.0",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.6",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^4.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
