@@ -1,0 +1,33 @@
+{
+  "ci": {
+    "collect": {
+      "url": [
+        "http://localhost:3007/",
+        "http://localhost:3007/mutuelle-senior",
+        "http://localhost:3007/mutuelle-sante",
+        "http://localhost:3007/comparatif-mutuelle-senior",
+        "http://localhost:3007/comparatif-mutuelle-sante",
+        "http://localhost:3007/meilleure-mutuelle-senior",
+        "http://localhost:3007/devis-mutuelle-senior",
+        "http://localhost:3007/mutuelle-sante-retraite"
+      ],
+      "numberOfRuns": 1,
+      "settings": {
+        "preset": "desktop",
+        "chromeFlags": "--no-sandbox --headless=new"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.8 }],
+        "categories:accessibility": ["error", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}

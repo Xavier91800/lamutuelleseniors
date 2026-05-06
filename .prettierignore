@@ -1,0 +1,13 @@
+node_modules/
+.next/
+out/
+coverage/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.lighthouseci/
+playwright-report/
+test-results/
+specs/
+.specify/
+.claude/
