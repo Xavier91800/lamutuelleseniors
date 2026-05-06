@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
@@ -15,7 +16,19 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-dark)] text-white">
+      <section className="relative isolate overflow-hidden text-white">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/images/hero-famille.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            priority
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-brand)]/85 to-[var(--color-brand-dark)]/85" />
+        </div>
         <div className="mx-auto flex max-w-7xl flex-col items-center px-4 py-20 text-center sm:px-6 lg:py-28 lg:px-8">
           <h1 className="max-w-3xl text-4xl font-bold sm:text-5xl lg:text-6xl">
             La mutuelle santé senior, simplement.
