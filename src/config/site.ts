@@ -20,8 +20,8 @@ const fallback = {
   dpoEmail: 'TODO_DPO_EMAIL',
   baseUrl: 'https://www.la-mutuelle-seniors.fr',
   colorPrimary: '#1F4FA0',
-  colorSecondary: '#FFB400',
-  logoPath: '/images/logo-placeholder.svg',
+  colorSecondary: '#F37021',
+  logoPath: '/images/logo.png',
 } as const;
 
 export const siteConfig: SiteConfig = {

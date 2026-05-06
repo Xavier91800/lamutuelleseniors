@@ -5,7 +5,8 @@
     'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --color-brand: #1f4fa0;
   --color-brand-dark: #163a78;
-  --color-accent: #ffb400;
+  --color-accent: #f37021;
+  --color-accent-dark: #d35a14;
 }
 
 :root {

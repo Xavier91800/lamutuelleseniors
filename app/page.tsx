@@ -26,7 +26,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/tunnel"
-            className="mt-10 inline-flex items-center justify-center rounded-lg bg-[var(--color-accent)] px-8 py-4 text-lg font-semibold text-gray-900 shadow-lg hover:bg-yellow-400"
+            className="mt-10 inline-flex items-center justify-center rounded-lg bg-[var(--color-accent)] px-8 py-4 text-lg font-semibold text-gray-900 shadow-lg hover:bg-[var(--color-accent-dark)]"
           >
             Obtenir mon devis gratuit →
           </Link>

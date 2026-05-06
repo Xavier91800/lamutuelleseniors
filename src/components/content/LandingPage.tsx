@@ -39,7 +39,7 @@ export function LandingPage({ config, sections, faqs }: LandingPageProps) {
           <p className="mt-6 text-lg text-white/90 sm:text-xl">{config.intro}</p>
           <Link
             href="/tunnel"
-            className="mt-8 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-[var(--color-accent)] px-7 py-3 text-base font-semibold text-gray-900 shadow-lg hover:bg-yellow-400"
+            className="mt-8 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-[var(--color-accent)] px-7 py-3 text-base font-semibold text-gray-900 shadow-lg hover:bg-[var(--color-accent-dark)]"
           >
             Obtenir mon devis gratuit →
           </Link>
@@ -103,7 +103,7 @@ export function LandingPage({ config, sections, faqs }: LandingPageProps) {
           </p>
           <Link
             href="/tunnel"
-            className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-[var(--color-accent)] px-7 py-3 text-base font-semibold text-gray-900 shadow-lg hover:bg-yellow-400"
+            className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-lg bg-[var(--color-accent)] px-7 py-3 text-base font-semibold text-gray-900 shadow-lg hover:bg-[var(--color-accent-dark)]"
           >
             Démarrer mon comparatif
           </Link>
