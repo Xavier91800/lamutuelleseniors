@@ -1,3 +1,5 @@
+import { MARKETING } from './marketing';
+
 export type SiteConfig = {
   siteName: string;
   legalEntity: string;
@@ -5,6 +7,7 @@ export type SiteConfig = {
   phone: string;
   email: string;
   dpoEmail: string;
+  orias: string;
   baseUrl: string;
   colorPrimary: string;
   colorSecondary: string;
@@ -13,11 +16,12 @@ export type SiteConfig = {
 
 const fallback = {
   siteName: 'La Mutuelle Seniors',
-  legalEntity: 'TODO_LEGAL_ENTITY',
-  legalAddress: 'TODO_LEGAL_ADDRESS',
-  phone: 'TODO_PHONE',
-  email: 'TODO_EMAIL',
-  dpoEmail: 'TODO_DPO_EMAIL',
+  legalEntity: '[ENTITE_LEGALE]',
+  legalAddress: '[ADRESSE_LEGALE]',
+  phone: MARKETING.TEL,
+  email: '[EMAIL_CONTACT]',
+  dpoEmail: '[EMAIL_DPO]',
+  orias: MARKETING.ORIAS,
   baseUrl: 'https://www.la-mutuelle-seniors.fr',
   colorPrimary: '#1F4FA0',
   colorSecondary: '#F37021',
@@ -31,6 +35,7 @@ export const siteConfig: SiteConfig = {
   phone: process.env.SITE_PHONE ?? fallback.phone,
   email: process.env.SITE_EMAIL ?? fallback.email,
   dpoEmail: process.env.SITE_DPO_EMAIL ?? fallback.dpoEmail,
+  orias: process.env.SITE_ORIAS ?? fallback.orias,
   baseUrl: process.env.SITE_BASE_URL ?? fallback.baseUrl,
   colorPrimary: process.env.SITE_COLOR_PRIMARY ?? fallback.colorPrimary,
   colorSecondary: process.env.SITE_COLOR_SECONDARY ?? fallback.colorSecondary,
