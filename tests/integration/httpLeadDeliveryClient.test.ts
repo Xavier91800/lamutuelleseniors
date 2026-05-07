@@ -291,6 +291,34 @@ describe('HttpLeadDeliveryClient — payload mapping', () => {
   });
 });
 
+describe('HttpLeadDeliveryClient — consentProof.createdTime normalization', () => {
+  it('converts the SQLite "YYYY-MM-DD HH:MM:SS" timestamp to ISO 8601 with Z', async () => {
+    const { client, calls } = buildClient([
+      tokenOk,
+      { status: 201, body: { success: true, data: { leadId: 'cm_iso' } } },
+    ]);
+    await client.deliver({
+      ...samplePayload,
+      consent: { ...samplePayload.consent, granted_at: '2026-05-07 08:41:47' },
+    });
+    const body = calls[1].body as { consentProof: { createdTime: string } };
+    expect(body.consentProof.createdTime).toBe('2026-05-07T08:41:47.000Z');
+  });
+
+  it('passes a value already in ISO 8601 through unchanged', async () => {
+    const { client, calls } = buildClient([
+      tokenOk,
+      { status: 201, body: { success: true, data: { leadId: 'cm_iso2' } } },
+    ]);
+    await client.deliver({
+      ...samplePayload,
+      consent: { ...samplePayload.consent, granted_at: '2026-05-07T10:00:00.000Z' },
+    });
+    const body = calls[1].body as { consentProof: { createdTime: string } };
+    expect(body.consentProof.createdTime).toBe('2026-05-07T10:00:00.000Z');
+  });
+});
+
 describe('HttpLeadDeliveryClient — token caching', () => {
   it('reuses the cached token across deliveries within its TTL', async () => {
     const { client, calls } = buildClient([
