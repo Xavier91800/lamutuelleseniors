@@ -5,6 +5,13 @@ services:
       args:
         GOOGLE_SITE_VERIFICATION: "${GOOGLE_SITE_VERIFICATION:-}"
         BING_SITE_VERIFICATION: "${BING_SITE_VERIFICATION:-}"
+        SITE_LEGAL_ENTITY: "${SITE_LEGAL_ENTITY:-}"
+        SITE_LEGAL_ADDRESS: "${SITE_LEGAL_ADDRESS:-}"
+        SITE_PHONE: "${SITE_PHONE:-}"
+        SITE_EMAIL: "${SITE_EMAIL:-}"
+        SITE_DPO_NAME: "${SITE_DPO_NAME:-}"
+        SITE_DPO_EMAIL: "${SITE_DPO_EMAIL:-}"
+        SITE_ORIAS: "${SITE_ORIAS:-}"
     container_name: lamutuelleseniors
     user: "1001:1001"
     ports:
@@ -34,7 +41,9 @@ services:
       SITE_LEGAL_ADDRESS: "${SITE_LEGAL_ADDRESS:-}"
       SITE_PHONE: "${SITE_PHONE:-}"
       SITE_EMAIL: "${SITE_EMAIL:-}"
+      SITE_DPO_NAME: "${SITE_DPO_NAME:-}"
       SITE_DPO_EMAIL: "${SITE_DPO_EMAIL:-}"
+      SITE_ORIAS: "${SITE_ORIAS:-}"
     volumes:
       - ./data:/data
     healthcheck:

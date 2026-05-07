@@ -6,6 +6,7 @@ export type SiteConfig = {
   legalAddress: string;
   phone: string;
   email: string;
+  dpoName: string;
   dpoEmail: string;
   orias: string;
   baseUrl: string;
@@ -20,6 +21,7 @@ const fallback = {
   legalAddress: '[ADRESSE_LEGALE]',
   phone: MARKETING.TEL,
   email: '[EMAIL_CONTACT]',
+  dpoName: '[NOM_DPO]',
   dpoEmail: '[EMAIL_DPO]',
   orias: MARKETING.ORIAS,
   baseUrl: 'https://www.la-mutuelle-seniors.fr',
@@ -34,6 +36,7 @@ export const siteConfig: SiteConfig = {
   legalAddress: process.env.SITE_LEGAL_ADDRESS ?? fallback.legalAddress,
   phone: process.env.SITE_PHONE ?? fallback.phone,
   email: process.env.SITE_EMAIL ?? fallback.email,
+  dpoName: process.env.SITE_DPO_NAME ?? fallback.dpoName,
   dpoEmail: process.env.SITE_DPO_EMAIL ?? fallback.dpoEmail,
   orias: process.env.SITE_ORIAS ?? fallback.orias,
   baseUrl: process.env.SITE_BASE_URL ?? fallback.baseUrl,

@@ -85,12 +85,16 @@ export function Footer() {
                 {MARKETING.TEL_HORAIRES}
               </span>
             </p>
-            <p className="mt-3 text-base">
+            <p className="mt-4 text-sm text-gray-600">
+              <span className="block font-semibold text-gray-700">
+                Demandes RGPD (DPO)
+              </span>
+              <span className="block">{siteConfig.dpoName}</span>
               <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-gray-600 hover:text-[var(--color-brand)]"
+                href={`mailto:${siteConfig.dpoEmail}`}
+                className="text-[var(--color-brand)] hover:underline"
               >
-                {siteConfig.email}
+                {siteConfig.dpoEmail}
               </a>
             </p>
           </div>

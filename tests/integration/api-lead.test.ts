@@ -34,7 +34,7 @@ const baseBody = (overrides: Record<string, unknown> = {}) => ({
     data_processing: true,
     courtier_transmission: true,
     cgu_version: '1.1',
-    pdc_version: '1.1',
+    pdc_version: '1.2',
   },
   client_session_id: 'cs_xxxxxxxxxxxx',
   tunnel_started_at_ms: Date.now() - 30_000,
@@ -113,7 +113,7 @@ describe('POST /api/lead', () => {
         data_processing: true,
         courtier_transmission: false,
         cgu_version: '1.1',
-        pdc_version: '1.1',
+        pdc_version: '1.2',
       },
     });
     const res = await postLead(postRequest(body, '203.0.113.50'));

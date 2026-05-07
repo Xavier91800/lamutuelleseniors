@@ -12,11 +12,25 @@ RUN npm ci
 COPY . .
 
 # Build-time env vars — must be set before `next build` so static-rendered
-# pages embed them in their pre-computed metadata (e.g. verification meta tags).
+# pages embed them in their pre-computed metadata and footer/legal content.
 ARG GOOGLE_SITE_VERIFICATION=
 ARG BING_SITE_VERIFICATION=
+ARG SITE_LEGAL_ENTITY=
+ARG SITE_LEGAL_ADDRESS=
+ARG SITE_PHONE=
+ARG SITE_EMAIL=
+ARG SITE_DPO_NAME=
+ARG SITE_DPO_EMAIL=
+ARG SITE_ORIAS=
 ENV GOOGLE_SITE_VERIFICATION=$GOOGLE_SITE_VERIFICATION
 ENV BING_SITE_VERIFICATION=$BING_SITE_VERIFICATION
+ENV SITE_LEGAL_ENTITY=$SITE_LEGAL_ENTITY
+ENV SITE_LEGAL_ADDRESS=$SITE_LEGAL_ADDRESS
+ENV SITE_PHONE=$SITE_PHONE
+ENV SITE_EMAIL=$SITE_EMAIL
+ENV SITE_DPO_NAME=$SITE_DPO_NAME
+ENV SITE_DPO_EMAIL=$SITE_DPO_EMAIL
+ENV SITE_ORIAS=$SITE_ORIAS
 
 # Generate the legal-doc seed migration with up-to-date hashes before building
 RUN npx tsx migrations/seed-legal.ts
