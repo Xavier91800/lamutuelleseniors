@@ -35,6 +35,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/verites-augmentation-mutuelles-senior"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Vérités cachées de la flambée
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/cout-mutuelle-senior"
                   className="text-gray-600 hover:text-[var(--color-brand)]"
                 >

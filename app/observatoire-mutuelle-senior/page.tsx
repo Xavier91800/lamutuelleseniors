@@ -346,6 +346,23 @@ export default function ObservatoirePage() {
           </h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <Link
+              href="/verites-augmentation-mutuelles-senior"
+              className="block rounded-xl border-2 border-[var(--color-accent)]/40 bg-orange-50/30 p-6 transition-colors hover:border-[var(--color-accent)] hover:bg-orange-50 sm:col-span-2"
+            >
+              <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
+                Décryptage — à lire en priorité
+              </p>
+              <h3 className="mt-2 text-lg font-semibold text-gray-900">
+                Les vérités cachées de la flambée des cotisations
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                4 vérités publiques (Sénat, ACPR, DREES, DGCCRF) que la presse
+                grand public n&apos;explique presque jamais&nbsp;: transfert
+                Sécu→mutuelle, démutualisation post-ANI, dérive chambre
+                particulière, marges intactes des assureurs.
+              </p>
+            </Link>
+            <Link
               href="/cout-mutuelle-senior"
               className="block rounded-xl border border-gray-200 bg-gray-50 p-6 transition-colors hover:border-[var(--color-brand)] hover:bg-blue-50"
             >

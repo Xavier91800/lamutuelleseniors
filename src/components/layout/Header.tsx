@@ -12,6 +12,11 @@ const GUIDES = [
     description: 'Synthèse des publications publiques sur le marché.',
   },
   {
+    href: '/verites-augmentation-mutuelles-senior',
+    title: 'Vérités cachées de la flambée des cotisations',
+    description: '4 vérités publiques mais peu vulgarisées sur la hausse.',
+  },
+  {
     href: '/cout-mutuelle-senior',
     title: 'Combien coûte une mutuelle senior ?',
     description: 'Tarifs par âge, hausses 2025, leviers pour économiser.',

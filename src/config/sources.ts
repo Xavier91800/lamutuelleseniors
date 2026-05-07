@@ -54,6 +54,7 @@ export const SOURCES: Source[] = [
       'Bande de chiffres clés sur la home (×3 reste à charge senior 70+ vs <40 ans)',
       'Article « Observatoire de la mutuelle senior »',
       'Article « Combien coûte une mutuelle senior en 2026 ? »',
+      'Article « Les vérités cachées de la flambée des cotisations »',
     ],
   },
   {
@@ -86,6 +87,72 @@ export const SOURCES: Source[] = [
       'Bande de chiffres clés sur la home (+6 % de hausse moyenne en 2025)',
       'Article « Observatoire de la mutuelle senior »',
       'Article « Combien coûte une mutuelle senior en 2026 ? »',
+      'Article « Les vérités cachées de la flambée des cotisations »',
+    ],
+  },
+  {
+    id: 'senat-rapport-770',
+    organisme: 'Sénat — République française',
+    publication:
+      "Rapport d'information n° 770 (2023-2024) — Hausse des tarifs des complémentaires santé : l'impact sur le pouvoir d'achat des Français",
+    annee: '2024',
+    url: 'https://www.senat.fr/rap/r23-770/r23-770_mono.html',
+    type: 'rapport',
+    category: 'institutionnels',
+    cited: true,
+    description:
+      "Rapport sénatorial déposé en septembre 2024 qui documente la flambée des cotisations santé et le mécanisme de démutualisation post-ANI : depuis 2016, les actifs ont migré vers les contrats collectifs obligatoires d'entreprise, concentrant les retraités, indépendants et inactifs dans le pool individuel. Données clés sur les ratios S/P par segment, les écarts de cotisation par âge, et l'analyse de la concentration des risques.",
+    utilisations: [
+      'Article « Les vérités cachées de la flambée des cotisations »',
+    ],
+  },
+  {
+    id: 'acpr-as-178',
+    organisme: 'ACPR — Autorité de Contrôle Prudentiel et de Résolution (Banque de France)',
+    publication:
+      "Analyses et Synthèses n° 178 — Les assureurs santé-prévoyance en France en 2024 : activité, rentabilité et solvabilité",
+    annee: '2025',
+    url: 'https://acpr.banque-france.fr/fr/publications-et-statistiques/publications/ndeg-178-les-assureurs-sante-prevoyance-en-france-en-2024-activite-rentabilite-et-solvabilite',
+    type: 'rapport',
+    category: 'regulation-conso',
+    cited: true,
+    description:
+      "Publication ACPR de décembre 2025 sur les comptes 2024 des assureurs santé-prévoyance français. Documente le résultat technique, le ratio de sinistralité et la solvabilité des organismes complémentaires. Référence pour vérifier le discours sectoriel sur la « rentabilité en baisse ».",
+    utilisations: [
+      'Article « Les vérités cachées de la flambée des cotisations »',
+    ],
+  },
+  {
+    id: 'dgccrf-facturation-sante',
+    organisme:
+      'DGCCRF — Direction générale de la Concurrence, de la Consommation et de la Répression des Fraudes',
+    publication:
+      'Contrôle de la facturation des établissements de santé — résultats 2021',
+    annee: '2021',
+    url: 'https://www.economie.gouv.fr/dgccrf/laction-de-la-dgccrf/les-enquetes/controle-de-la-facturation-des-etablissements-de-sante',
+    type: 'enquete',
+    category: 'regulation-conso',
+    cited: true,
+    description:
+      "Enquête DGCCRF qui a relevé un taux de non-conformité de 47 % sur les facturations contrôlées dans les établissements de santé. Concerne notamment l'attribution de la chambre particulière sans demande explicite du patient et les défauts d'information précontractuelle.",
+    utilisations: [
+      'Article « Les vérités cachées de la flambée des cotisations »',
+    ],
+  },
+  {
+    id: 'drees-organismes-2025',
+    organisme: 'DREES — Direction de la recherche, des études, de l’évaluation et des statistiques',
+    publication:
+      "Rapport 2025 sur la situation financière des organismes complémentaires assurant une couverture santé",
+    annee: '2025',
+    url: 'https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/rapports/251218-rapport-organismes-complémentaires',
+    type: 'rapport',
+    category: 'institutionnels',
+    cited: true,
+    description:
+      "Rapport annuel DREES de décembre 2025 sur les comptes 2024 des organismes complémentaires (mutuelles, sociétés d'assurance, institutions de prévoyance). Documente le taux de redistribution (cotisations/prestations), le résultat technique et les fonds propres du secteur. Permet de vérifier objectivement le narratif sur la santé financière des complémentaires.",
+    utilisations: [
+      'Article « Les vérités cachées de la flambée des cotisations »',
     ],
   },
   {

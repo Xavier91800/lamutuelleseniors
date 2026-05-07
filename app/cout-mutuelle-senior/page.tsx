@@ -201,6 +201,19 @@ export default function CoutMutuelleSeniorPage() {
           <p className="mt-3 text-sm text-gray-500">
             Source : <SourceLink id="mutualite-cotisations-2025" />.
           </p>
+          <p className="mt-3 text-base leading-relaxed text-gray-700">
+            Pour comprendre <strong>pourquoi</strong> la dynamique haussière
+            est structurelle (transfert Sécu→mutuelle, démutualisation
+            post-ANI), notre dossier{' '}
+            <Link
+              href="/verites-augmentation-mutuelles-senior"
+              className="font-semibold text-[var(--color-brand)] hover:underline"
+            >
+              « Les vérités cachées de la flambée des cotisations »
+            </Link>{' '}
+            détaille les quatre causes documentées par le Sénat, l&apos;ACPR
+            et la DREES.
+          </p>
         </section>
 
         <hr className="my-12 border-gray-200" />
