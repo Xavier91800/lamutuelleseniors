@@ -27,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${siteConfig.baseUrl}/verites-augmentation-mutuelles-senior`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
       url: `${siteConfig.baseUrl}/cout-mutuelle-senior`,
       lastModified: now,
       changeFrequency: 'monthly' as const,
