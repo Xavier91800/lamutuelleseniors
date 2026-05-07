@@ -27,6 +27,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${siteConfig.baseUrl}/cout-mutuelle-senior`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${siteConfig.baseUrl}/resilier-mutuelle-senior`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${siteConfig.baseUrl}/lexique-mutuelle`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
       url: `${siteConfig.baseUrl}/sources`,
       lastModified: now,
       changeFrequency: 'monthly' as const,
