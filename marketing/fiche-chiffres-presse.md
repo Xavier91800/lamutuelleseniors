@@ -123,7 +123,7 @@ Pendant ce temps, **le résultat technique des assureurs progresse**.
 
 **Xavier Blondeau** — Rédaction
 Easy Assur Logiciel
-✉ [michael.cassotti@easyassurlogiciel.fr](mailto:michael.cassotti@easyassurlogiciel.fr)
+✉ [xavier.blondeau@easyassurlogiciel.fr](mailto:xavier.blondeau@easyassurlogiciel.fr)
 
 Disponible pour interview, vérification de chiffres, orientation vers les publications source.
 
@@ -132,7 +132,3 @@ Disponible pour interview, vérification de chiffres, orientation vers les publi
 *La Mutuelle Seniors est un service indépendant de mise en relation entre seniors français et courtiers en assurance partenaires. Le site n'est ni assureur ni courtier. Service gratuit pour le visiteur, sans engagement.*
 
 *Édité par Easy Assur Logiciel · Données chiffrées issues exclusivement de publications publiques · Reprise éditoriale libre, mention de la source d'origine recommandée.*
-
----
-
-**📑 Pour exporter en PDF** : ouvrez ce fichier dans VSCode → installation extension `Markdown PDF` → clic droit → « Markdown PDF: Export (pdf) ». Ou via la ligne de commande : `pandoc fiche-chiffres-presse.md -o fiche-chiffres-presse.pdf`.
