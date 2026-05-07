@@ -337,6 +337,62 @@ export default function ObservatoirePage() {
           </p>
         </section>
 
+        <section
+          aria-labelledby="related"
+          className="mt-12 rounded-2xl border border-gray-200 bg-white p-8"
+        >
+          <h2 id="related" className="text-2xl font-bold text-gray-900">
+            Approfondir
+          </h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            <Link
+              href="/cout-mutuelle-senior"
+              className="block rounded-xl border border-gray-200 bg-gray-50 p-6 transition-colors hover:border-[var(--color-brand)] hover:bg-blue-50"
+            >
+              <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
+                Tarifs 2026
+              </p>
+              <h3 className="mt-2 text-lg font-semibold text-gray-900">
+                Combien coûte une mutuelle senior&nbsp;?
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                Prix moyen par tranche d&apos;âge, postes qui font monter la
+                facture, et leviers concrets pour la limiter.
+              </p>
+            </Link>
+            <Link
+              href="/resilier-mutuelle-senior"
+              className="block rounded-xl border border-gray-200 bg-gray-50 p-6 transition-colors hover:border-[var(--color-brand)] hover:bg-blue-50"
+            >
+              <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
+                Guide pratique
+              </p>
+              <h3 className="mt-2 text-lg font-semibold text-gray-900">
+                Résilier sa mutuelle senior
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                Procédure exacte issue de la loi du 14 juillet 2019, délais,
+                pièges à éviter — texte de loi en main.
+              </p>
+            </Link>
+            <Link
+              href="/lexique-mutuelle"
+              className="block rounded-xl border border-gray-200 bg-gray-50 p-6 transition-colors hover:border-[var(--color-brand)] hover:bg-blue-50 sm:col-span-2"
+            >
+              <p className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
+                Glossaire
+              </p>
+              <h3 className="mt-2 text-lg font-semibold text-gray-900">
+                Lexique mutuelle santé
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-700">
+                BR, BRSS, ticket modérateur, OPTAM, ALD, panier 100&nbsp;%
+                santé… 18 termes expliqués simplement.
+              </p>
+            </Link>
+          </div>
+        </section>
+
         <aside className="mt-12 rounded-2xl bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-dark)] p-8 text-white sm:p-10">
           <h2 className="text-2xl font-bold">
             Comparer librement, sans engagement

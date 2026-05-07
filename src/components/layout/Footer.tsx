@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="border-t border-gray-200 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">{siteConfig.siteName}</h2>
             <p className="mt-3 text-base text-gray-600">
@@ -20,6 +20,53 @@ export function Footer() {
               explicite, à un Courtier Partenaire qui prendra contact avec vous.
             </p>
           </div>
+          <nav aria-label="Ressources">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-700">
+              Ressources
+            </h3>
+            <ul className="mt-4 space-y-3 text-base">
+              <li>
+                <Link
+                  href="/observatoire-mutuelle-senior"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Observatoire mutuelle senior
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cout-mutuelle-senior"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Combien coûte une mutuelle senior
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/resilier-mutuelle-senior"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Résilier sa mutuelle senior
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/lexique-mutuelle"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Lexique mutuelle santé
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/sources"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Sources &amp; publications
+                </Link>
+              </li>
+            </ul>
+          </nav>
           <nav aria-label="Informations légales">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-700">
               Informations légales
@@ -47,22 +94,6 @@ export function Footer() {
                   className="text-gray-600 hover:text-[var(--color-brand)]"
                 >
                   Mentions légales
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sources"
-                  className="text-gray-600 hover:text-[var(--color-brand)]"
-                >
-                  Sources &amp; publications
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/observatoire-mutuelle-senior"
-                  className="text-gray-600 hover:text-[var(--color-brand)]"
-                >
-                  Observatoire de la mutuelle senior
                 </Link>
               </li>
             </ul>
