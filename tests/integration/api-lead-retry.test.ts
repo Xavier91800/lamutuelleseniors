@@ -54,7 +54,7 @@ function leadBody(overrides: Record<string, unknown> = {}) {
       data_processing: true,
       courtier_transmission: true,
       cgu_version: '1.1',
-      pdc_version: '1.1',
+      pdc_version: '1.2',
     },
     client_session_id: 'cs_xxxxxxxxxxxx',
     tunnel_started_at_ms: Date.now() - 30_000,

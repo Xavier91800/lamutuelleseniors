@@ -5,6 +5,11 @@ services:
       args:
         GOOGLE_SITE_VERIFICATION: "${GOOGLE_SITE_VERIFICATION:-}"
         BING_SITE_VERIFICATION: "${BING_SITE_VERIFICATION:-}"
+        SITE_LEGAL_ENTITY: "${SITE_LEGAL_ENTITY:-}"
+        SITE_LEGAL_ADDRESS: "${SITE_LEGAL_ADDRESS:-}"
+        SITE_EMAIL: "${SITE_EMAIL:-}"
+        SITE_DPO_NAME: "${SITE_DPO_NAME:-}"
+        SITE_DPO_EMAIL: "${SITE_DPO_EMAIL:-}"
     container_name: lamutuelleseniors
     user: "1001:1001"
     ports:
@@ -15,8 +20,15 @@ services:
       PORT: "3000"
       DATABASE_PATH: "/data/lamutuelleseniors.db"
       LEAD_DELIVERY_MODE: "${LEAD_DELIVERY_MODE:-mock}"
-      LEAD_DELIVERY_URL: "${LEAD_DELIVERY_URL:-}"
-      LEAD_DELIVERY_AUTH: "${LEAD_DELIVERY_AUTH:-}"
+      LEAD_DELIVERY_API_BASE_URL: "${LEAD_DELIVERY_API_BASE_URL:-https://leads.vos2vis.net/api}"
+      LEAD_DELIVERY_API_KEY: "${LEAD_DELIVERY_API_KEY:-}"
+      LEAD_DELIVERY_API_SECRET: "${LEAD_DELIVERY_API_SECRET:-}"
+      LEAD_DELIVERY_EXTERNAL_SOURCE: "${LEAD_DELIVERY_EXTERNAL_SOURCE:-lamutuelleseniors-tunnel-v1}"
+      LEAD_DELIVERY_FORM_ID: "${LEAD_DELIVERY_FORM_ID:-lamutuelleseniors-form-mutuelle-v1}"
+      LEAD_DELIVERY_ROUTING_RULE_ID_SENIOR: "${LEAD_DELIVERY_ROUTING_RULE_ID_SENIOR:-}"
+      LEAD_DELIVERY_ROUTING_RULE_ID_UNDER55_FAMILY: "${LEAD_DELIVERY_ROUTING_RULE_ID_UNDER55_FAMILY:-}"
+      LEAD_DELIVERY_ROUTING_RULE_ID_UNDER55_SOLO: "${LEAD_DELIVERY_ROUTING_RULE_ID_UNDER55_SOLO:-}"
+      LEAD_DELIVERY_SNAPSHOT_BASE_URL: "${LEAD_DELIVERY_SNAPSHOT_BASE_URL:-}"
       MAIL_NOTIFY: "${MAIL_NOTIFY:-true}"
       GMAIL_USER: "${GMAIL_USER:-}"
       GMAIL_PASS: "${GMAIL_PASS:-}"
@@ -32,13 +44,13 @@ services:
       SITE_NAME: "${SITE_NAME:-La Mutuelle Seniors}"
       SITE_LEGAL_ENTITY: "${SITE_LEGAL_ENTITY:-}"
       SITE_LEGAL_ADDRESS: "${SITE_LEGAL_ADDRESS:-}"
-      SITE_PHONE: "${SITE_PHONE:-}"
       SITE_EMAIL: "${SITE_EMAIL:-}"
+      SITE_DPO_NAME: "${SITE_DPO_NAME:-}"
       SITE_DPO_EMAIL: "${SITE_DPO_EMAIL:-}"
     volumes:
       - ./data:/data
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000/api/health"]
       interval: 30s
       timeout: 10s
       retries: 3

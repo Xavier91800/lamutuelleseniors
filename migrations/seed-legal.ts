@@ -52,6 +52,18 @@ const GROUPS: VersionGroup[] = [
       { kind: 'mentions', version: '1.1', file: 'mentions-v1_1.md' },
     ],
   },
+  {
+    filename: '0004_publish_pdc_v1_2.sql',
+    effective_at: '2026-05-07',
+    retirePrior: true,
+    docs: [{ kind: 'pdc', version: '1.2', file: 'pdc-v1_2.md' }],
+  },
+  {
+    filename: '0005_publish_mentions_v1_2.sql',
+    effective_at: '2026-05-07',
+    retirePrior: true,
+    docs: [{ kind: 'mentions', version: '1.2', file: 'mentions-v1_2.md' }],
+  },
 ];
 
 function sha256(text: string): string {

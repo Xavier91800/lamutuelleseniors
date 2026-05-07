@@ -2,8 +2,8 @@ export type SiteConfig = {
   siteName: string;
   legalEntity: string;
   legalAddress: string;
-  phone: string;
   email: string;
+  dpoName: string;
   dpoEmail: string;
   baseUrl: string;
   colorPrimary: string;
@@ -13,23 +13,23 @@ export type SiteConfig = {
 
 const fallback = {
   siteName: 'La Mutuelle Seniors',
-  legalEntity: 'TODO_LEGAL_ENTITY',
-  legalAddress: 'TODO_LEGAL_ADDRESS',
-  phone: 'TODO_PHONE',
-  email: 'TODO_EMAIL',
-  dpoEmail: 'TODO_DPO_EMAIL',
+  legalEntity: '[ENTITE_LEGALE]',
+  legalAddress: '[ADRESSE_LEGALE]',
+  email: '[EMAIL_CONTACT]',
+  dpoName: '[NOM_DPO]',
+  dpoEmail: '[EMAIL_DPO]',
   baseUrl: 'https://www.la-mutuelle-seniors.fr',
   colorPrimary: '#1F4FA0',
-  colorSecondary: '#FFB400',
-  logoPath: '/images/logo-placeholder.svg',
+  colorSecondary: '#F37021',
+  logoPath: '/images/logo.png',
 } as const;
 
 export const siteConfig: SiteConfig = {
   siteName: process.env.SITE_NAME ?? fallback.siteName,
   legalEntity: process.env.SITE_LEGAL_ENTITY ?? fallback.legalEntity,
   legalAddress: process.env.SITE_LEGAL_ADDRESS ?? fallback.legalAddress,
-  phone: process.env.SITE_PHONE ?? fallback.phone,
   email: process.env.SITE_EMAIL ?? fallback.email,
+  dpoName: process.env.SITE_DPO_NAME ?? fallback.dpoName,
   dpoEmail: process.env.SITE_DPO_EMAIL ?? fallback.dpoEmail,
   baseUrl: process.env.SITE_BASE_URL ?? fallback.baseUrl,
   colorPrimary: process.env.SITE_COLOR_PRIMARY ?? fallback.colorPrimary,

@@ -10,9 +10,10 @@ export function Header() {
           <Image
             src={siteConfig.logoPath}
             alt={siteConfig.siteName}
-            width={200}
-            height={48}
+            width={180}
+            height={72}
             priority
+            className="h-12 w-auto sm:h-14"
           />
         </Link>
         <nav aria-label="Navigation principale" className="hidden md:block">

@@ -71,12 +71,12 @@ export default function Page() {
       ]}
       faqs={[
         {
-          question: 'Existe-t-il un classement officiel des meilleures mutuelles seniors&nbsp;?',
+          question: 'Existe-t-il un classement officiel des meilleures mutuelles seniors ?',
           answer:
             'Non, pas de classement officiel ; en revanche, des organismes comme l’ACPR publient des données de solvabilité, et des médias spécialisés (Que Choisir, 60 Millions de consommateurs) mènent des enquêtes annuelles. Un comparatif individualisé reste la meilleure approche.',
         },
         {
-          question: 'Mon état de santé peut-il être un frein&nbsp;?',
+          question: 'Mon état de santé peut-il être un frein ?',
           answer:
             'De moins en moins. Beaucoup de mutuelles seniors ne demandent plus de questionnaire médical. Notre service oriente en priorité vers ces formules.',
         },

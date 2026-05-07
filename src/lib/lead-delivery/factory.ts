@@ -8,10 +8,7 @@ export function getLeadDeliveryClient(): LeadDeliveryClient {
   if (cached) return cached;
   const mode = process.env.LEAD_DELIVERY_MODE ?? 'mock';
   if (mode === 'http') {
-    cached = new HttpLeadDeliveryClient(
-      process.env.LEAD_DELIVERY_URL ?? '',
-      process.env.LEAD_DELIVERY_AUTH ?? ''
-    );
+    cached = HttpLeadDeliveryClient.fromEnv();
   } else {
     cached = new MockLeadDeliveryClient();
   }

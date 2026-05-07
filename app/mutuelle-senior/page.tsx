@@ -43,7 +43,7 @@ export default function Page() {
             <ul>
               <li>
                 <strong>Le rapport garanties / prix</strong> — un tarif bas avec des plafonds
-                ridicules ne sert à rien : regardez le 100&nbsp;% santé dentaire et optique, les
+                ridicules ne sert à rien : regardez le 100 % santé dentaire et optique, les
                 forfaits implants, les remboursements en pourcentage du tarif Sécu (BR ou BRSS).
               </li>
               <li>
@@ -77,7 +77,7 @@ export default function Page() {
                 avec les meilleures offres correspondant à votre situation.
               </p>
               <p>
-                Le service est <strong>100&nbsp;% gratuit</strong>, <strong>sans engagement</strong>{' '}
+                Le service est <strong>100 % gratuit</strong>, <strong>sans engagement</strong>{' '}
                 et vous gardez la main : vous comparez, vous décidez, vous choisissez ou vous
                 refusez. Aucune souscription automatique n’est faite à votre place.
               </p>
@@ -87,22 +87,22 @@ export default function Page() {
       ]}
       faqs={[
         {
-          question: 'À partir de quel âge une mutuelle est-elle considérée comme « senior »&nbsp;?',
+          question: 'À partir de quel âge une mutuelle est-elle considérée comme « senior » ?',
           answer:
             'Le seuil habituel se situe à 55 ans, mais certaines compagnies proposent des offres seniors dès 50 ans, et d’autres démarrent à 60 ou 65 ans. L’important n’est pas l’étiquette mais l’adéquation des garanties à vos besoins réels.',
         },
         {
-          question: 'Est-ce vrai qu’une mutuelle senior coûte plus cher&nbsp;?',
+          question: 'Est-ce vrai qu’une mutuelle senior coûte plus cher ?',
           answer:
             'En moyenne oui, car la fréquence des soins augmente avec l’âge. Mais l’écart se justifie surtout pour les postes coûteux (dentaire, optique, hospitalisation). Comparer plusieurs offres permet souvent d’économiser 200 à 400 € par an à garanties équivalentes.',
         },
         {
-          question: 'Puis-je changer de mutuelle senior à tout moment&nbsp;?',
+          question: 'Puis-je changer de mutuelle senior à tout moment ?',
           answer:
             'Oui, depuis la loi du 14 juillet 2019, vous pouvez résilier votre mutuelle à tout moment après un an d’engagement, sans frais ni justification. C’est rapide : votre nouvelle mutuelle s’occupe en général des démarches.',
         },
         {
-          question: 'Y a-t-il un questionnaire médical&nbsp;?',
+          question: 'Y a-t-il un questionnaire médical ?',
           answer:
             'De plus en plus de mutuelles seniors n’en demandent pas, ce qui simplifie l’adhésion et garantit l’égalité de traitement quel que soit votre état de santé. Nous orientons en priorité vers ces formules.',
         },

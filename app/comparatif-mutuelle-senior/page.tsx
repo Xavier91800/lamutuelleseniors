@@ -21,7 +21,7 @@ export default function Page() {
           body: (
             <p>
               Les écarts de tarifs entre deux mutuelles seniors aux garanties équivalentes peuvent
-              dépasser <strong>40&nbsp;%</strong>. À 60 ans et plus, cela représente plusieurs
+              dépasser <strong>40 %</strong>. À 60 ans et plus, cela représente plusieurs
               centaines d’euros par an. Un comparatif sérieux ne se limite pas au prix : il évalue
               les remboursements réels (et pas seulement les pourcentages affichés), les délais de
               carence, la qualité du service client et les services associés.
@@ -74,12 +74,12 @@ export default function Page() {
             'En général deux à quatre offres, sélectionnées parmi les plus compétitives de nos courtiers partenaires sur votre département. Vous restez libre de toutes les refuser.',
         },
         {
-          question: 'Le comparatif est-il vraiment indépendant&nbsp;?',
+          question: 'Le comparatif est-il vraiment indépendant ?',
           answer:
             'Notre rémunération provient des courtiers partenaires lorsque vous souscrivez via eux. Nous n’avons aucun intérêt à vous orienter vers une formule plus chère que nécessaire — au contraire, un client satisfait revient et nous recommande.',
         },
         {
-          question: 'Combien de temps cela prend-il&nbsp;?',
+          question: 'Combien de temps cela prend-il ?',
           answer:
             'Deux minutes pour répondre à nos questions, et 24 à 72 h pour recevoir les premières propositions de la part des courtiers.',
         },

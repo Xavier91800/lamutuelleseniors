@@ -47,7 +47,7 @@ describe('Consent record contract', () => {
     const cgu = getPublished('cgu');
     const pdc = getPublished('pdc');
     expect(cgu.version).toBe('1.1');
-    expect(pdc.version).toBe('1.1');
+    expect(pdc.version).toBe('1.2');
 
     insertConsent({
       lead_id: leadId,
