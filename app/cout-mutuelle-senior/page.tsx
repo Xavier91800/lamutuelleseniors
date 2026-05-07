@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { SOURCES } from '@/config/sources';
+import { EditorialSignature } from '@/components/content/EditorialSignature';
 
 const PUBLISHED_AT = '2026-05-07';
 const TITLE = 'Combien coûte une mutuelle senior en 2026 ? Décryptage des tarifs';
@@ -365,6 +366,8 @@ export default function CoutMutuelleSeniorPage() {
             Démarrer mon comparatif gratuit →
           </Link>
         </aside>
+
+        <EditorialSignature publishedAt={PUBLISHED_AT} />
       </article>
     </>
   );

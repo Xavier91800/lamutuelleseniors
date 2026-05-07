@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { EditorialSignature } from '@/components/content/EditorialSignature';
 
+const PUBLISHED_AT = '2026-05-07';
 const TITLE = 'Lexique mutuelle santé : tous les termes expliqués simplement';
 const DESCRIPTION =
   'BR, BRSS, ticket modérateur, 100 % santé, OPTAM, ALD, dépassements d’honoraires, panier de soins… Le glossaire complet des termes de la mutuelle santé, en français clair.';
@@ -291,6 +293,8 @@ export default function LexiquePage() {
             </li>
           </ul>
         </aside>
+
+        <EditorialSignature publishedAt={PUBLISHED_AT} mode="maj" />
       </article>
     </>
   );

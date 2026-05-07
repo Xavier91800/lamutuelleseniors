@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { SOURCES } from '@/config/sources';
+import { EditorialSignature } from '@/components/content/EditorialSignature';
 
 const PUBLISHED_AT = '2026-05-07';
 const TITLE = 'Observatoire de la mutuelle santé senior 2026';
@@ -427,6 +428,8 @@ export default function ObservatoirePage() {
             Démarrer mon comparatif gratuit →
           </Link>
         </aside>
+
+        <EditorialSignature publishedAt={PUBLISHED_AT} />
       </article>
     </>
   );

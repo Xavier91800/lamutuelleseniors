@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { SOURCES } from '@/config/sources';
+import { EditorialSignature } from '@/components/content/EditorialSignature';
 
 const PUBLISHED_AT = '2026-05-07';
 const TITLE =
@@ -461,6 +462,8 @@ export default function VeritesPage() {
             synthétise les principales publications.
           </p>
         </aside>
+
+        <EditorialSignature publishedAt={PUBLISHED_AT} />
       </article>
     </>
   );
