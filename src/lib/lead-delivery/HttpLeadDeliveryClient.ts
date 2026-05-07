@@ -220,7 +220,7 @@ export class HttpLeadDeliveryClient implements LeadDeliveryClient {
       productType: 'SANTE',
       externalSource: this.cfg.externalSource,
       consentProof: {
-        createdTime: payload.consent.granted_at,
+        createdTime: toIso8601(payload.consent.granted_at),
         formId: this.cfg.formId,
       },
       prospect: {
@@ -393,4 +393,29 @@ function normalizePhone(phone: string): string {
 
 function isoDateToDateTime(yyyymmdd: string): string {
   return `${yyyymmdd}T00:00:00.000Z`;
+}
+
+/**
+ * Normalise un horodatage en ISO 8601 strict (suffixe Z explicite).
+ * Couvre :
+ *   - déjà ISO avec T/Z ou offset → renvoyé tel quel
+ *   - format SQLite "YYYY-MM-DD HH:MM:SS[.fff]" (UTC implicite) → "…Z"
+ *   - "YYYY-MM-DD" seul → minuit UTC
+ *   - reste : best-effort via new Date(); fallback sur la valeur originale
+ */
+function toIso8601(input: string): string {
+  if (input.includes('T')) {
+    if (input.endsWith('Z') || /[+-]\d{2}:?\d{2}$/.test(input)) return input;
+    return `${input}Z`;
+  }
+  const sqliteMatch = input.match(/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})(\.\d+)?$/);
+  if (sqliteMatch) {
+    return `${sqliteMatch[1]}T${sqliteMatch[2]}${sqliteMatch[3] ?? '.000'}Z`;
+  }
+  if (/^\d{4}-\d{2}-\d{2}$/.test(input)) {
+    return `${input}T00:00:00.000Z`;
+  }
+  const d = new Date(input);
+  if (!Number.isNaN(d.getTime())) return d.toISOString();
+  return input;
 }
