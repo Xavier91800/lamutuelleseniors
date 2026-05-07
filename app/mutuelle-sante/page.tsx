@@ -41,7 +41,7 @@ export default function Page() {
             <ul>
               <li>
                 <strong>Économique</strong> — couvre l’essentiel (consultations, pharmacie,
-                hospitalisation à 100&nbsp;% du tarif Sécu). Pour les budgets serrés ou les profils
+                hospitalisation à 100 % du tarif Sécu). Pour les budgets serrés ou les profils
                 en bonne santé.
               </li>
               <li>
@@ -65,18 +65,18 @@ export default function Page() {
           body: (
             <>
               <p>
-                <strong>Quels sont mes postes prioritaires&nbsp;?</strong> Dentaire, optique,
+                <strong>Quels sont mes postes prioritaires ?</strong> Dentaire, optique,
                 hospitalisation, médecines douces, audioprothèses : la mutuelle idéale n’est pas la
                 plus chère, c’est celle qui couvre le mieux ce dont vous avez réellement besoin.
               </p>
               <p>
-                <strong>Quel est mon budget mensuel raisonnable&nbsp;?</strong> Comptez en général
+                <strong>Quel est mon budget mensuel raisonnable ?</strong> Comptez en général
                 40 à 80 € pour une formule équilibrée à 30 ans, 90 à 150 € pour un senior avec
                 couverture complète. Au-delà, vérifiez que les garanties supplémentaires sont
                 vraiment utilisées.
               </p>
               <p>
-                <strong>Ai-je besoin d’une couverture famille&nbsp;?</strong> Beaucoup de contrats
+                <strong>Ai-je besoin d’une couverture famille ?</strong> Beaucoup de contrats
                 proposent des tarifs dégressifs à partir du conjoint et des enfants — souvent
                 gratuits dès le 3ᵉ enfant.
               </p>
@@ -86,17 +86,17 @@ export default function Page() {
       ]}
       faqs={[
         {
-          question: 'Comment lire les garanties exprimées en pourcentage&nbsp;?',
+          question: 'Comment lire les garanties exprimées en pourcentage ?',
           answer:
-            'Un remboursement à 100&nbsp;% signifie 100&nbsp;% du tarif de convention de la Sécurité sociale (BR/BRSS), pas 100&nbsp;% de ce que vous payez. À 200&nbsp;%, votre mutuelle complète jusqu’à deux fois le tarif Sécu, ce qui couvre la plupart des dépassements modérés.',
+            'Un remboursement à 100 % signifie 100 % du tarif de convention de la Sécurité sociale (BR/BRSS), pas 100 % de ce que vous payez. À 200 %, votre mutuelle complète jusqu’à deux fois le tarif Sécu, ce qui couvre la plupart des dépassements modérés.',
         },
         {
-          question: 'Faut-il garder sa mutuelle d’entreprise quand on devient indépendant&nbsp;?',
+          question: 'Faut-il garder sa mutuelle d’entreprise quand on devient indépendant ?',
           answer:
             'Vous bénéficiez de la portabilité gratuite jusqu’à 12 mois après la sortie de l’entreprise. Au-delà, comparez : une mutuelle individuelle bien choisie coûte souvent moins cher que la prolongation de la collective.',
         },
         {
-          question: 'Le 100&nbsp;% santé est-il automatique&nbsp;?',
+          question: 'Le 100 % santé est-il automatique ?',
           answer:
             'Oui, toutes les mutuelles « responsables » l’incluent obligatoirement sur le dentaire, l’optique et l’audio. Cela ne couvre pas tout, mais garantit un panier de soins sans reste à charge.',
         },

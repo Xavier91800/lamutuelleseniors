@@ -26,7 +26,7 @@ export default function Error({
         informées. Vous pouvez réessayer ou revenir à l&apos;accueil.
       </p>
       {error.digest && (
-        <p className="mt-3 text-xs text-gray-400">Référence&nbsp;: {error.digest}</p>
+        <p className="mt-3 text-xs text-gray-400">Référence : {error.digest}</p>
       )}
       <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
         <button

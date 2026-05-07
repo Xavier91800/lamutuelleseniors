@@ -97,11 +97,11 @@ export default function HomePage() {
         </div>
         <div className="mx-auto flex max-w-5xl flex-col items-center px-4 py-20 text-center sm:px-6 lg:py-28 lg:px-8">
           <h1 className="max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-            Retraite, hausse des cotisations&nbsp;? Trouvez en 2 minutes la mutuelle senior
+            Retraite, hausse des cotisations ? Trouvez en 2 minutes la mutuelle senior
             qui vous protège vraiment.
           </h1>
           <p className="mt-6 max-w-3xl text-xl text-white/95 sm:text-2xl">
-            Optique, dentaire, hospitalisation, audioprothèse&nbsp;: comparez gratuitement
+            Optique, dentaire, hospitalisation, audioprothèse : comparez gratuitement
             les meilleures offres adaptées à votre âge et à votre budget. Sans démarches
             compliquées, sans engagement.
           </p>
@@ -112,7 +112,7 @@ export default function HomePage() {
             Obtenir mon devis gratuit →
           </Link>
           <p className="mt-5 text-base text-white/90 sm:text-lg">
-            Sans engagement · 2 minutes top chrono · 100&nbsp;% gratuit
+            Sans engagement · 2 minutes top chrono · 100 % gratuit
           </p>
         </div>
       </section>
@@ -144,7 +144,7 @@ export default function HomePage() {
                   {stat.label}
                 </dd>
                 <p className="mt-3 text-xs text-gray-500">
-                  Source&nbsp;:{' '}
+                  Source :{' '}
                   <a
                     href={stat.sourceUrl}
                     target="_blank"
@@ -158,25 +158,7 @@ export default function HomePage() {
             ))}
           </dl>
           <p className="mx-auto mt-12 max-w-3xl text-center text-xs leading-relaxed text-gray-500">
-            Sources publiques&nbsp;: INSEE, DREES, Mutualité Française, Légifrance.
-            Ces statistiques portent sur le marché français de la complémentaire santé
-            et n&apos;engagent pas l&apos;activité de {siteConfig.siteName}, qui n&apos;est
-            ni assureur ni courtier en assurance. Détails et liens vers les
-            publications d&apos;origine sur la{' '}
-            <Link
-              href="/sources"
-              className="font-semibold text-[var(--color-brand)] hover:underline"
-            >
-              page Sources
-            </Link>
-            {' '}et notre{' '}
-            <Link
-              href="/observatoire-mutuelle-senior"
-              className="font-semibold text-[var(--color-brand)] hover:underline"
-            >
-              Observatoire de la mutuelle senior
-            </Link>
-            .
+            Sources publiques : INSEE, DREES, Mutualité Française, Légifrance.
           </p>
         </div>
       </section>
@@ -195,7 +177,7 @@ export default function HomePage() {
               Trois étapes simples, deux minutes top chrono
             </h2>
             <p className="mt-4 text-lg text-gray-700">
-              Pas de jargon, pas d&apos;engagement&nbsp;: vous comparez à votre rythme,
+              Pas de jargon, pas d&apos;engagement : vous comparez à votre rythme,
               vous décidez librement.
             </p>
           </div>
@@ -356,7 +338,7 @@ export default function HomePage() {
             Démarrer mon comparatif gratuit
           </Link>
           <p className="mt-4 text-sm text-white/80">
-            Aucun appel surprise&nbsp;: vous êtes recontacté(e) uniquement après votre
+            Aucun appel surprise : vous êtes recontacté(e) uniquement après votre
             demande, par le Courtier Partenaire que nous aurons sélectionné.
           </p>
         </div>

@@ -97,7 +97,7 @@ export function LandingPage({ config, sections, faqs }: LandingPageProps) {
       {/* Final CTA */}
       <section className="bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-dark)] py-12 text-white">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold sm:text-3xl">Prêt·e à comparer&nbsp;?</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Prêt·e à comparer ?</h2>
           <p className="mt-3 text-base text-white/90">
             Quelques questions suffisent — c’est gratuit et sans engagement.
           </p>

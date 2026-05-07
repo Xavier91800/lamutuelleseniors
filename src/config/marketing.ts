@@ -58,9 +58,19 @@ export const FAQ_ITEMS: FaqItem[] = [
       "Oui, totalement. Vous ne payez rien pour comparer ou recevoir des propositions. Notre service est rémunéré par les courtiers partenaires lorsqu'ils vous contactent, sans aucun coût pour vous.",
   },
   {
-    question: 'Mes données sont-elles protégées ?',
+    question: 'Le comparatif est-il vraiment indépendant ?',
     reponse:
-      "Vos informations sont stockées en France, conformément au RGPD. Nous ne les transmettons qu'aux courtiers partenaires que vous avez explicitement acceptés, et jamais à des fins publicitaires. Vous pouvez demander leur suppression à tout moment.",
+      "Notre rémunération provient des courtiers partenaires lorsque vous souscrivez via eux. Nous n'avons aucun intérêt à vous orienter vers une formule plus chère que nécessaire — au contraire, un client satisfait revient et nous recommande.",
+  },
+  {
+    question: "Combien d'offres vais-je recevoir ?",
+    reponse:
+      "En général deux à quatre offres, sélectionnées parmi les plus compétitives de nos courtiers partenaires sur votre département. Vous restez libre de toutes les refuser.",
+  },
+  {
+    question: 'Combien de temps cela prend-il ?',
+    reponse:
+      "Deux minutes pour répondre à nos questions, et 24 à 72 h pour recevoir les premières propositions de la part des courtiers.",
   },
   {
     question: 'Suis-je obligé(e) de souscrire après le comparatif ?',
@@ -68,9 +78,9 @@ export const FAQ_ITEMS: FaqItem[] = [
       "Non. Le comparatif est sans engagement. Vous recevez les propositions, vous prenez le temps d'y réfléchir, et vous décidez librement de souscrire ou non. Aucune pression, aucun frais caché.",
   },
   {
-    question: 'Combien de temps prend le comparatif ?',
+    question: 'Mes données sont-elles protégées ?',
     reponse:
-      "Environ 2 minutes pour répondre aux questions. Vous recevez ensuite les propositions de nos courtiers partenaires sous 24 h ouvrées par e-mail.",
+      "Vos informations sont stockées en France, conformément au RGPD. Nous ne les transmettons qu'aux courtiers partenaires que vous avez explicitement acceptés, et jamais à des fins publicitaires. Vous pouvez demander leur suppression à tout moment.",
   },
   {
     question: 'Puis-je changer de mutuelle si je suis déjà couvert(e) ?',

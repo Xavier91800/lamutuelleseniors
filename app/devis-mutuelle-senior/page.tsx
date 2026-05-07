@@ -41,7 +41,7 @@ export default function Page() {
               </li>
               <li>
                 <strong>Les offres « miracles » à 9,90 €/mois</strong> — vérifiez le tableau de
-                garanties : couverture quasi nulle au-delà du panier 100&nbsp;% santé.
+                garanties : couverture quasi nulle au-delà du panier 100 % santé.
               </li>
             </ul>
           ),
@@ -59,12 +59,12 @@ export default function Page() {
       ]}
       faqs={[
         {
-          question: 'Le devis est-il contractuel&nbsp;?',
+          question: 'Le devis est-il contractuel ?',
           answer:
             'Oui — un devis émis par un courtier engage l’assureur sur les garanties et le tarif annoncés, généralement pendant 30 jours, à condition que vos déclarations soient exactes.',
         },
         {
-          question: 'Puis-je demander plusieurs devis pour comparer&nbsp;?',
+          question: 'Puis-je demander plusieurs devis pour comparer ?',
           answer:
             'C’est précisément le but de notre service : un seul formulaire, plusieurs devis adaptés à votre profil.',
         },

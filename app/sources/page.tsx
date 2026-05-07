@@ -66,7 +66,7 @@ export default function SourcesPage() {
               <span className="rounded-full bg-gray-100 px-3 py-1 text-gray-700">
                 {TYPE_LABELS[source.type]}
               </span>
-              <span className="text-gray-500">Publication&nbsp;: {source.annee}</span>
+              <span className="text-gray-500">Publication : {source.annee}</span>
             </div>
             <h2
               id={`source-${source.id}`}
@@ -80,7 +80,7 @@ export default function SourcesPage() {
             </p>
             <details className="mt-4 text-sm text-gray-600">
               <summary className="cursor-pointer font-semibold text-gray-700 hover:text-[var(--color-brand)]">
-                Où ce document est-il cité sur le site&nbsp;?
+                Où ce document est-il cité sur le site ?
               </summary>
               <ul className="mt-2 list-disc space-y-1 pl-5">
                 {source.utilisations.map((u) => (
@@ -118,7 +118,7 @@ export default function SourcesPage() {
 
       <aside className="mt-16 rounded-2xl bg-gray-50 p-8 text-base leading-relaxed text-gray-700">
         <h2 className="text-xl font-semibold text-gray-900">
-          Vous voulez creuser ces chiffres&nbsp;?
+          Vous voulez creuser ces chiffres ?
         </h2>
         <p className="mt-3">
           Notre <Link

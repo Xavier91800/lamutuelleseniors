@@ -15,7 +15,7 @@ export function Footer() {
               en assurance partenaires, spécialisés dans la mutuelle santé senior.
             </p>
             <p className="mt-4 text-sm text-gray-500">
-              {siteConfig.siteName} n&apos;est ni assureur, ni courtier en assurance&nbsp;:
+              {siteConfig.siteName} n&apos;est ni assureur, ni courtier en assurance :
               le Site se limite à transmettre votre demande, avec votre consentement
               explicite, à un Courtier Partenaire qui prendra contact avec vous.
             </p>

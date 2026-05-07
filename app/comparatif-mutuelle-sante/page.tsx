@@ -72,12 +72,12 @@ export default function Page() {
       ]}
       faqs={[
         {
-          question: 'Puis-je résilier ma mutuelle actuelle facilement&nbsp;?',
+          question: 'Puis-je résilier ma mutuelle actuelle facilement ?',
           answer:
             'Oui : depuis la loi du 14 juillet 2019, vous pouvez résilier à tout moment après un an d’engagement, sans frais. La nouvelle mutuelle s’occupe en général des démarches.',
         },
         {
-          question: 'Le 100&nbsp;% santé est-il dans toutes les offres&nbsp;?',
+          question: 'Le 100 % santé est-il dans toutes les offres ?',
           answer:
             'Oui, c’est obligatoire pour toute mutuelle dite « responsable ». Il couvre un panier de soins zéro reste à charge sur le dentaire, l’optique et l’audio. Au-delà, les niveaux varient.',
         },

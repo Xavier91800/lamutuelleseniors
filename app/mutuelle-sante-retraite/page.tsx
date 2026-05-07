@@ -22,7 +22,7 @@ export default function Page() {
             <p>
               Au moment du départ à la retraite, la mutuelle d’entreprise prend fin. Vous pouvez
               prolonger temporairement la couverture (loi Évin), mais les tarifs grimpent souvent
-              de 50&nbsp;% à 100&nbsp;% sur 3 ans. Souscrire une mutuelle santé individuelle, dès
+              de 50 % à 100 % sur 3 ans. Souscrire une mutuelle santé individuelle, dès
               que vous connaissez votre date de départ, est en général plus avantageux à moyen
               terme.
             </p>
@@ -71,12 +71,12 @@ export default function Page() {
       ]}
       faqs={[
         {
-          question: 'Puis-je garder ma mutuelle d’entreprise après la retraite&nbsp;?',
+          question: 'Puis-je garder ma mutuelle d’entreprise après la retraite ?',
           answer:
-            'Oui, via la loi Évin, mais à un tarif majoré (et plafonné les 3 premières années à +50&nbsp;%). Comparer avec une offre individuelle est presque toujours rentable.',
+            'Oui, via la loi Évin, mais à un tarif majoré (et plafonné les 3 premières années à +50 %). Comparer avec une offre individuelle est presque toujours rentable.',
         },
         {
-          question: 'À quel âge dois-je penser à changer de mutuelle&nbsp;?',
+          question: 'À quel âge dois-je penser à changer de mutuelle ?',
           answer:
             'Idéalement 6 à 12 mois avant le départ à la retraite, pour souscrire en bonne santé et anticiper l’arrêt de la couverture employeur.',
         },

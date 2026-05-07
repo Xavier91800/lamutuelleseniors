@@ -56,7 +56,7 @@ function SourceCallout({ id }: { id: string }) {
   if (!source) return null;
   return (
     <p className="mt-3 text-sm text-gray-500">
-      Source&nbsp;:{' '}
+      Source :{' '}
       <a
         href={source.url}
         target="_blank"
@@ -90,19 +90,19 @@ export default function ObservatoirePage() {
             Dossier — Marché de la mutuelle senior
           </p>
           <h1 className="mt-2 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl">
-            Observatoire de la mutuelle santé senior&nbsp;: ce que disent les
+            Observatoire de la mutuelle santé senior : ce que disent les
             publications publiques en 2026
           </h1>
           <p className="mt-6 text-xl leading-relaxed text-gray-700">
             En 2026, le marché français de la mutuelle santé reste un sujet
-            d&apos;information sensible pour les seniors&nbsp;: cotisations en hausse,
+            d&apos;information sensible pour les seniors : cotisations en hausse,
             restes à charge plus élevés avec l&apos;âge, droit de résiliation
             désormais ouvert toute l&apos;année. Voici une synthèse des publications
             publiques les plus utiles pour s&apos;y retrouver — et les liens directs
             vers chacune d&apos;elles.
           </p>
           <p className="mt-4 text-sm text-gray-500">
-            Publié le 7 mai 2026. Sources&nbsp;: DREES, INSEE, Mutualité Française,
+            Publié le 7 mai 2026. Sources : DREES, INSEE, Mutualité Française,
             Légifrance.
           </p>
         </header>
@@ -114,7 +114,7 @@ export default function ObservatoirePage() {
             id="syn-1"
             className="text-2xl font-bold text-gray-900 sm:text-3xl"
           >
-            1. Démographie&nbsp;: un public senior structurellement en croissance
+            1. Démographie : un public senior structurellement en croissance
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-800">
             Selon le bilan démographique 2024 de l&apos;INSEE, les personnes âgées
@@ -126,11 +126,11 @@ export default function ObservatoirePage() {
           </p>
           <p className="mt-4 text-base leading-relaxed text-gray-800">
             Pour le marché de la complémentaire santé, ces chiffres ont une
-            conséquence concrète&nbsp;: la demande de contrats adaptés aux seniors
+            conséquence concrète : la demande de contrats adaptés aux seniors
             (qui consomment plus de soins, et notamment plus de soins coûteux comme
             l&apos;optique, le dentaire, l&apos;audioprothèse ou l&apos;hospitalisation)
             est appelée à croître durablement. Côté assureurs et mutuelles, c&apos;est
-            aussi un défi de tarification&nbsp;: les contrats individuels seniors
+            aussi un défi de tarification : les contrats individuels seniors
             doivent intégrer un risque santé qui augmente avec l&apos;âge.
           </p>
           <SourceCallout id="insee-pyramide-2024" />
@@ -161,7 +161,7 @@ export default function ObservatoirePage() {
             de manière significative. La DREES indique <strong>une cotisation
             moyenne de 33 € à 20 ans contre 146 € à 85 ans</strong>. Cette
             progression reflète la sinistralité plus élevée des assurés
-            seniors&nbsp;: à garanties équivalentes, le coût des soins remboursés
+            seniors : à garanties équivalentes, le coût des soins remboursés
             est mécaniquement plus important.
           </p>
           <h3 className="mt-6 text-xl font-semibold text-gray-900">
@@ -188,7 +188,7 @@ export default function ObservatoirePage() {
             id="syn-3"
             className="text-2xl font-bold text-gray-900 sm:text-3xl"
           >
-            3. Le financement de la santé en France&nbsp;: où s&apos;intercale la mutuelle ?
+            3. Le financement de la santé en France : où s&apos;intercale la mutuelle ?
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-800">
             Les <em>Comptes de la santé</em> publiés annuellement par la DREES
@@ -205,7 +205,7 @@ export default function ObservatoirePage() {
             son rôle est précisément de prendre en charge le ticket modérateur,
             les dépassements d&apos;honoraires, les forfaits hospitaliers et tout
             ce qui n&apos;est pas (ou mal) remboursé par la Sécu. Pour un senior,
-            la lecture concrète de ces comptes est la suivante&nbsp;: même dans
+            la lecture concrète de ces comptes est la suivante : même dans
             un système globalement protecteur, l&apos;empilement
             soins-dentaires-optique-hospitalisation peut représenter plusieurs
             centaines d&apos;euros par an si la complémentaire est mal calibrée.
@@ -220,7 +220,7 @@ export default function ObservatoirePage() {
             id="syn-4"
             className="text-2xl font-bold text-gray-900 sm:text-3xl"
           >
-            4. Hausse 2025 des cotisations&nbsp;: ce que l&apos;Enquête Mutualité Française documente
+            4. Hausse 2025 des cotisations : ce que l&apos;Enquête Mutualité Française documente
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-800">
             La Mutualité Française (fédération réunissant la quasi-totalité des
@@ -231,7 +231,7 @@ export default function ObservatoirePage() {
           </p>
           <p className="mt-4 text-base leading-relaxed text-gray-800">
             Les cotisations ont augmenté en moyenne de <strong>6 %</strong> en
-            2025, avec une nuance utile pour les seniors&nbsp;: la hausse atteint{' '}
+            2025, avec une nuance utile pour les seniors : la hausse atteint{' '}
             <strong>+5,3 % sur les contrats individuels</strong> (souscrits
             massivement après le départ à la retraite) et{' '}
             <strong>+6,8 % sur les contrats collectifs</strong>. La fédération
@@ -241,7 +241,7 @@ export default function ObservatoirePage() {
             Sécurité sociale et de l&apos;inflation médicale.
           </p>
           <p className="mt-4 text-base leading-relaxed text-gray-800">
-            Pour le senior&nbsp;: ces hausses sont structurelles, et il n&apos;y a
+            Pour le senior : ces hausses sont structurelles, et il n&apos;y a
             aucune raison qu&apos;elles s&apos;arrêtent à court terme. Comparer
             les offres tous les un à deux ans est l&apos;une des rares marges de
             manœuvre dont dispose un assuré pour limiter l&apos;impact financier
@@ -257,14 +257,14 @@ export default function ObservatoirePage() {
             id="syn-5"
             className="text-2xl font-bold text-gray-900 sm:text-3xl"
           >
-            5. Le droit de résiliation infra-annuelle&nbsp;: changer librement après un an
+            5. Le droit de résiliation infra-annuelle : changer librement après un an
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-800">
             La <strong>loi n° 2019-733 du 14 juillet 2019</strong> a introduit en
             France un droit de résiliation des contrats de complémentaire santé à
             tout moment après un an de souscription, sans frais ni motif. Le
             <strong> décret n° 2020-1438 du 24 novembre 2020</strong> en précise
-            les modalités&nbsp;: la résiliation entre en vigueur le 1ᵉʳ décembre
+            les modalités : la résiliation entre en vigueur le 1ᵉʳ décembre
             2020, et le dispositif est codifié à l&apos;article{' '}
             <strong>L113-15-2 du Code des assurances</strong>.
           </p>
@@ -274,7 +274,7 @@ export default function ObservatoirePage() {
             écrite (courrier postal, email ou formulaire en ligne du nouveau
             prestataire). Aucun motif n&apos;est exigé, aucune pénalité ne peut
             être facturée, et la résiliation prend effet un mois après réception
-            par l&apos;assureur. Mieux&nbsp;: le nouvel organisme peut prendre en
+            par l&apos;assureur. Mieux : le nouvel organisme peut prendre en
             charge directement la procédure de résiliation auprès de
             l&apos;ancien, sur présentation d&apos;un mandat signé.
           </p>
@@ -325,7 +325,7 @@ export default function ObservatoirePage() {
           </ul>
           <p className="mt-8 text-base leading-relaxed text-gray-800">
             Toutes ces données sont issues de publications publiques que vous
-            pouvez consulter directement&nbsp;: leur liste exhaustive et les
+            pouvez consulter directement : leur liste exhaustive et les
             liens vers leurs versions d&apos;origine se trouvent sur notre{' '}
             <Link
               href="/sources"
