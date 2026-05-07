@@ -242,14 +242,24 @@ export class HttpLeadDeliveryClient implements LeadDeliveryClient {
     const routingRuleId = this.cfg.routingRules[payload.campaign_id];
     if (routingRuleId) body.metaRoutingRuleId = routingRuleId;
 
-    // Mutuelle : on ne renseigne le bloc que si on est sûr de pouvoir respecter le contrat
-    // (currentlyInsured=true REQUIERT insuredOverOneYear, qu'on n'a pas dans le tunnel).
+    // Mutuelle : on ne renseigne le bloc que si on est sûr de pouvoir respecter le
+    // contrat partenaire. currentlyInsured=true REQUIERT insuredOverOneYear ; on
+    // n'envoie donc le bloc en cas de "mutuelle_actuelle" que si l'utilisateur a
+    // explicitement répondu Oui/Non à cette question dans le tunnel.
     const sit = payload.qualifications?.situation_actuelle;
+    const insuredOver = payload.qualifications?.insured_over_one_year;
+    const targetSwitch = payload.qualifications?.date_effet_souhaitee
+      ? isoDateToDateTime(payload.qualifications.date_effet_souhaitee)
+      : undefined;
     if (sit === 'aucune_mutuelle') {
       body.mutuelle = { currentlyInsured: false };
-      if (payload.qualifications?.date_effet_souhaitee) {
-        body.mutuelle.targetSwitchDate = isoDateToDateTime(payload.qualifications.date_effet_souhaitee);
-      }
+      if (targetSwitch) body.mutuelle.targetSwitchDate = targetSwitch;
+    } else if (sit === 'mutuelle_actuelle' && (insuredOver === 0 || insuredOver === 1)) {
+      body.mutuelle = {
+        currentlyInsured: true,
+        insuredOverOneYear: insuredOver === 1,
+      };
+      if (targetSwitch) body.mutuelle.targetSwitchDate = targetSwitch;
     }
 
     const niveau = payload.qualifications?.niveau_garantie;

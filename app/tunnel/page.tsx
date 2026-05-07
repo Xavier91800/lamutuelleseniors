@@ -28,6 +28,7 @@ type FormValues = {
   regime?: string;
   niveau_garantie?: '' | 'economique' | 'equilibre' | 'renforce' | 'premium';
   situation_actuelle?: '' | 'aucune_mutuelle' | 'mutuelle_actuelle' | 'prefere_ne_pas_dire';
+  insured_over_one_year?: '' | '0' | '1';
   date_effet_souhaitee?: string;
   data_processing: boolean;
   courtier_transmission: boolean;
@@ -199,6 +200,11 @@ function TunnelForm() {
         regime: values.regime ? Number(values.regime) : undefined,
         niveau_garantie: values.niveau_garantie ? values.niveau_garantie : undefined,
         situation_actuelle: values.situation_actuelle ? values.situation_actuelle : undefined,
+        insured_over_one_year:
+          values.situation_actuelle === 'mutuelle_actuelle' &&
+          (values.insured_over_one_year === '0' || values.insured_over_one_year === '1')
+            ? (Number(values.insured_over_one_year) as 0 | 1)
+            : undefined,
         date_effet_souhaitee: values.date_effet_souhaitee || undefined,
         ...(() => {
           const titulaireRegime = values.regime ? Number(values.regime) : 1;
@@ -577,6 +583,43 @@ function TunnelForm() {
               {...register('date_effet_souhaitee')}
             />
           </div>
+
+          {watch('situation_actuelle') === 'mutuelle_actuelle' && (
+            <div className="mt-4">
+              <FieldGroup
+                legend="Êtes-vous couvert(e) par cette mutuelle depuis plus d'un an ?"
+                hint="Cette information aide le courtier à savoir si la résiliation infra-annuelle s'applique."
+              >
+                <label className="flex items-center gap-3 text-base">
+                  <input
+                    type="radio"
+                    value="1"
+                    {...register('insured_over_one_year')}
+                    className="h-5 w-5"
+                  />
+                  Oui, depuis plus d&apos;un an
+                </label>
+                <label className="flex items-center gap-3 text-base">
+                  <input
+                    type="radio"
+                    value="0"
+                    {...register('insured_over_one_year')}
+                    className="h-5 w-5"
+                  />
+                  Non, depuis moins d&apos;un an
+                </label>
+                <label className="flex items-center gap-3 text-base">
+                  <input
+                    type="radio"
+                    value=""
+                    {...register('insured_over_one_year')}
+                    className="h-5 w-5"
+                  />
+                  Je ne sais pas
+                </label>
+              </FieldGroup>
+            </div>
+          )}
           <div className="mt-6">
             <NavButtons
               onBack={back}

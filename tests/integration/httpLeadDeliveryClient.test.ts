@@ -270,7 +270,7 @@ describe('HttpLeadDeliveryClient — payload mapping', () => {
     expect(body.comment).toContain('renforcée');
   });
 
-  it("omits the mutuelle block when situation is 'mutuelle_actuelle' (no insuredOverOneYear data)", async () => {
+  it("omits the mutuelle block when situation is 'mutuelle_actuelle' but insured_over_one_year is unknown", async () => {
     const { client, calls } = buildClient([
       tokenOk,
       { status: 201, body: { success: true, data: { leadId: 'cm_y' } } },
@@ -281,6 +281,45 @@ describe('HttpLeadDeliveryClient — payload mapping', () => {
     });
     const body = calls[1].body as Record<string, unknown>;
     expect(body.mutuelle).toBeUndefined();
+  });
+
+  it("includes the mutuelle block (currentlyInsured=true) when 'mutuelle_actuelle' and insured_over_one_year is set", async () => {
+    const { client, calls } = buildClient([
+      tokenOk,
+      { status: 201, body: { success: true, data: { leadId: 'cm_mut' } } },
+    ]);
+    await client.deliver({
+      ...samplePayload,
+      qualifications: {
+        ...samplePayload.qualifications,
+        situation_actuelle: 'mutuelle_actuelle',
+        insured_over_one_year: 1,
+        date_effet_souhaitee: '2026-09-01',
+      },
+    });
+    const body = calls[1].body as { mutuelle?: Record<string, unknown> };
+    expect(body.mutuelle).toEqual({
+      currentlyInsured: true,
+      insuredOverOneYear: true,
+      targetSwitchDate: '2026-09-01T00:00:00.000Z',
+    });
+  });
+
+  it("emits insuredOverOneYear=false when 'mutuelle_actuelle' and the visitor declared <1 year", async () => {
+    const { client, calls } = buildClient([
+      tokenOk,
+      { status: 201, body: { success: true, data: { leadId: 'cm_mut2' } } },
+    ]);
+    await client.deliver({
+      ...samplePayload,
+      qualifications: {
+        ...samplePayload.qualifications,
+        situation_actuelle: 'mutuelle_actuelle',
+        insured_over_one_year: 0,
+      },
+    });
+    const body = calls[1].body as { mutuelle?: { insuredOverOneYear: boolean } };
+    expect(body.mutuelle?.insuredOverOneYear).toBe(false);
   });
 
   it('omits metaRoutingRuleId when no routing rule is configured for the campaign', async () => {

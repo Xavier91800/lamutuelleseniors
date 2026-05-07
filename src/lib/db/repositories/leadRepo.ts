@@ -45,7 +45,7 @@ export function insertLead(input: LeadInsert, db: Database = getDb()): { id: str
     `INSERT INTO leads (
       id, nom, nom_normalized, prenom, prenom_normalized,
       date_naissance, code_postal, email, telephone,
-      regime, niveau_garantie, situation_actuelle, date_effet_souhaitee,
+      regime, niveau_garantie, situation_actuelle, insured_over_one_year, date_effet_souhaitee,
       conjoint_present, conjoint_date_naissance, conjoint_regime,
       enfants_count, enfants_dates_naissance, enfants_regimes,
       campaign_id, age_at_submission,
@@ -54,7 +54,7 @@ export function insertLead(input: LeadInsert, db: Database = getDb()): { id: str
     ) VALUES (
       @id, @nom, @nom_normalized, @prenom, @prenom_normalized,
       @date_naissance, @code_postal, @email, @telephone,
-      @regime, @niveau_garantie, @situation_actuelle, @date_effet_souhaitee,
+      @regime, @niveau_garantie, @situation_actuelle, @insured_over_one_year, @date_effet_souhaitee,
       @conjoint_present, @conjoint_date_naissance, @conjoint_regime,
       @enfants_count, @enfants_dates_naissance, @enfants_regimes,
       @campaign_id, @age_at_submission,
@@ -74,6 +74,7 @@ export function insertLead(input: LeadInsert, db: Database = getDb()): { id: str
     regime: input.regime ?? null,
     niveau_garantie: input.niveau_garantie ?? null,
     situation_actuelle: input.situation_actuelle ?? null,
+    insured_over_one_year: input.insured_over_one_year ?? null,
     date_effet_souhaitee: input.date_effet_souhaitee ?? null,
     conjoint_present: input.conjoint_present ?? null,
     conjoint_date_naissance: input.conjoint_date_naissance ?? null,

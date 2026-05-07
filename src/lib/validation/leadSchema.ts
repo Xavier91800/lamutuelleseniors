@@ -58,6 +58,7 @@ export const leadRequestSchema = z
     situation_actuelle: z
       .enum(['aucune_mutuelle', 'mutuelle_actuelle', 'prefere_ne_pas_dire'])
       .optional(),
+    insured_over_one_year: z.union([z.literal(0), z.literal(1)]).optional(),
     date_effet_souhaitee: isoDate.optional(),
 
     // Family composition (conditionally required for under-55, see superRefine)

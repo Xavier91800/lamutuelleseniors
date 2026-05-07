@@ -58,10 +58,14 @@ function buildPayload(leadId: string, db: Database): LeadDeliveryPayload | null 
         : undefined;
       const conjointRegime = (lead as unknown as { conjoint_regime?: number | null })
         .conjoint_regime;
+      const insuredOver = (lead as unknown as { insured_over_one_year?: number | null })
+        .insured_over_one_year;
       return {
         regime: lead.regime ?? undefined,
         niveau_garantie: lead.niveau_garantie ?? undefined,
         situation_actuelle: lead.situation_actuelle ?? undefined,
+        insured_over_one_year:
+          insuredOver === 0 || insuredOver === 1 ? (insuredOver as 0 | 1) : undefined,
         date_effet_souhaitee: lead.date_effet_souhaitee ?? undefined,
         conjoint:
           lead.conjoint_present === 1 && lead.conjoint_date_naissance
