@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { PRIMARY_LANDINGS } from '@/config/seo';
-import { MARKETING } from '@/config/marketing';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -16,8 +15,9 @@ export function Footer() {
               en assurance partenaires, spécialisés dans la mutuelle santé senior.
             </p>
             <p className="mt-4 text-sm text-gray-500">
-              Intermédiaire en assurance immatriculé à l&apos;ORIAS sous le numéro{' '}
-              <strong className="text-gray-700">{siteConfig.orias}</strong>.
+              {siteConfig.siteName} n&apos;est ni assureur, ni courtier en assurance&nbsp;:
+              le Site se limite à transmettre votre demande, avec votre consentement
+              explicite, à un Courtier Partenaire qui prendra contact avec vous.
             </p>
           </div>
           <nav aria-label="Informations légales">
@@ -49,6 +49,22 @@ export function Footer() {
                   Mentions légales
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/sources"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Sources &amp; publications
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/observatoire-mutuelle-senior"
+                  className="text-gray-600 hover:text-[var(--color-brand)]"
+                >
+                  Observatoire de la mutuelle senior
+                </Link>
+              </li>
             </ul>
           </nav>
           <nav aria-label="Nos guides">
@@ -76,14 +92,11 @@ export function Footer() {
             <p className="mt-1 text-sm text-gray-600">{siteConfig.legalAddress}</p>
             <p className="mt-3 text-base">
               <a
-                href={MARKETING.TEL_HREF}
+                href={`mailto:${siteConfig.email}`}
                 className="font-semibold text-[var(--color-brand)] hover:underline"
               >
-                {MARKETING.TEL}
+                {siteConfig.email}
               </a>
-              <span className="block text-sm text-gray-500">
-                {MARKETING.TEL_HORAIRES}
-              </span>
             </p>
             <p className="mt-4 text-sm text-gray-600">
               <span className="block font-semibold text-gray-700">
@@ -100,8 +113,7 @@ export function Footer() {
           </div>
         </div>
         <p className="mt-12 text-center text-xs text-gray-500">
-          © {year} {siteConfig.siteName}. Tous droits réservés. ORIAS&nbsp;:{' '}
-          {siteConfig.orias}.
+          © {year} {siteConfig.siteName}. Tous droits réservés.
         </p>
       </div>
     </footer>

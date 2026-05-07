@@ -19,6 +19,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const editorial: MetadataRoute.Sitemap = [
+    {
+      url: `${siteConfig.baseUrl}/observatoire-mutuelle-senior`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${siteConfig.baseUrl}/sources`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.4,
+    },
+  ];
+
   const legals: MetadataRoute.Sitemap = LEGAL_PAGES.map((p) => ({
     url: `${siteConfig.baseUrl}/${p.slug}`,
     lastModified: now,
@@ -26,5 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   }));
 
-  return [home, ...landings, ...legals];
+  return [home, ...landings, ...editorial, ...legals];
 }

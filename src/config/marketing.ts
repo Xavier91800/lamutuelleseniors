@@ -1,63 +1,51 @@
 /**
- * Placeholders marketing — valeurs plausibles à remplacer par les vraies données
- * une fois fournies par le métier. Toutes les clés sont nommées pour être
- * grep-ables dans le code rendu (`grep -r "\[NB_DEVIS\]"`).
+ * Constantes marketing — exclusivement des faits vérifiables et sourcés.
  *
- * Convention :
- *   - `value`        → ce qui s'affiche sur le site (chiffre crédible aujourd'hui)
- *   - `placeholder`  → l'identifiant `[XXX]` à utiliser pour retrouver l'occurrence
+ * Convention : tout chiffre affiché sur le site DOIT être issu d'une source
+ * publique et auditée (DREES, INSEE, Mutualité Française, Légifrance, ACPR).
+ * Aucun chiffre concernant l'activité du site (nombre de leads, satisfaction,
+ * économies réalisées) ne peut être affiché tant qu'il n'est pas mesuré et
+ * auditable — sinon pratique commerciale trompeuse au sens de l'art. L121-1
+ * du Code de la consommation.
  *
- * Pour remplacer une valeur en prod : éditer ce fichier, redéployer.
+ * Pour ajouter une statistique : fournir l'organisme + l'année + l'URL primaire.
  */
 
-export const MARKETING = {
-  NB_DEVIS: '12 458',
-  NB_PARTENAIRES: '24',
-  NOTE_MOYENNE: '4,8/5',
-  NB_AVIS: '2 134',
-  ECONOMIES_MOY: '37 %',
-  TEL: '01 86 76 12 34',
-  TEL_HREF: 'tel:+33186761234',
-  TEL_HORAIRES: 'du lundi au vendredi, 9 h – 19 h',
-  ORIAS: '23 008 145',
-} as const;
-
-export type Testimonial = {
-  id: 'AVIS_1' | 'AVIS_2' | 'AVIS_3';
-  prenom: string;
-  age: number;
-  ville: string;
-  note: 5 | 4;
-  texte: string;
+export type MarketStat = {
+  value: string;
+  label: string;
+  source: string;
+  sourceUrl: string;
 };
 
-export const TESTIMONIALS: Testimonial[] = [
+export const MARKET_STATS: MarketStat[] = [
   {
-    id: 'AVIS_1',
-    prenom: 'Monique',
-    age: 67,
-    ville: 'Tours',
-    note: 5,
-    texte:
-      "À la retraite, ma mutuelle d'entreprise s'est arrêtée. J'ai trouvé une formule équivalente pour 42 € de moins par mois. Le questionnaire est très simple, j'ai été rappelée le lendemain.",
+    value: '27,7 %',
+    label: 'des Français ont 60 ans ou plus',
+    source: 'INSEE, Pyramide des âges 2024',
+    sourceUrl: 'https://www.insee.fr/fr/outil-interactif/5014911/pyramide.htm',
   },
   {
-    id: 'AVIS_2',
-    prenom: 'Jean-Pierre',
-    age: 72,
-    ville: 'La Rochelle',
-    note: 5,
-    texte:
-      "Je redoutais les démarches en ligne, mais tout est clair, en grand, et sans piège. J'ai reçu 3 propositions, choisi celle qui couvrait bien le dentaire et l'optique. Aucune obligation, j'apprécie.",
+    value: '× 3',
+    label: 'de reste à charge santé pour un senior de 70 ans et plus vs un moins de 40 ans',
+    source: 'DREES, Panorama de la complémentaire santé 2024 (données 2019)',
+    sourceUrl:
+      'https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/240710_Panorama_ComplementaireSante2024',
   },
   {
-    id: 'AVIS_3',
-    prenom: 'Françoise',
-    age: 61,
-    ville: 'Annecy',
-    note: 4,
-    texte:
-      "Comparatif rapide, deux minutes pas plus. Le conseiller m'a expliqué les garanties hospitalisation sans jargon. J'ai gagné 28 € par mois sur ma cotisation, je recommande.",
+    value: '+ 6 %',
+    label: 'de hausse moyenne des cotisations de mutuelles en 2025',
+    source: 'Mutualité Française, Enquête Cotisations 2025',
+    sourceUrl:
+      'https://www.mutualite.fr/communiques-de-presse/enquete-cotisations-2025-une-hausse-qui-suit-les-depenses-de-sante-assumees-par-les-mutuelles/',
+  },
+  {
+    value: 'Depuis 2020',
+    label:
+      'vous pouvez résilier votre mutuelle santé à tout moment après un an, sans frais',
+    source: 'Loi n° 2019-733 du 14 juillet 2019, art. L113-15-2 du Code des assurances',
+    sourceUrl:
+      'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042672708',
   },
 ];
 
@@ -82,11 +70,11 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'Combien de temps prend le comparatif ?',
     reponse:
-      'Environ 2 minutes pour répondre aux questions. Vous recevez ensuite les propositions de nos courtiers partenaires sous 24 h ouvrées, par téléphone ou par e-mail selon votre préférence.',
+      "Environ 2 minutes pour répondre aux questions. Vous recevez ensuite les propositions de nos courtiers partenaires sous 24 h ouvrées par e-mail.",
   },
   {
     question: 'Puis-je changer de mutuelle si je suis déjà couvert(e) ?',
     reponse:
-      "Oui. Depuis la loi de résiliation infra-annuelle (2020), vous pouvez résilier votre mutuelle à tout moment après la première année de souscription, sans frais ni justification. Nos courtiers s'occupent gratuitement des démarches de résiliation pour vous.",
+      "Oui. Depuis la loi de résiliation infra-annuelle (loi du 14 juillet 2019, en vigueur depuis le 1ᵉʳ décembre 2020), vous pouvez résilier votre mutuelle à tout moment après la première année de souscription, sans frais ni justification. Le courtier que vous aurez retenu pourra prendre en charge gratuitement la résiliation de votre ancienne mutuelle.",
   },
 ];

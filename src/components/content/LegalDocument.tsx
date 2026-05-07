@@ -55,7 +55,6 @@ function applyPlaceholders(markdown: string): string {
   return markdown
     .replaceAll('{{SITE_LEGAL_ENTITY}}', siteConfig.legalEntity)
     .replaceAll('{{SITE_LEGAL_ADDRESS}}', siteConfig.legalAddress)
-    .replaceAll('{{SITE_PHONE}}', siteConfig.phone)
     .replaceAll('{{SITE_EMAIL}}', siteConfig.email)
     .replaceAll('{{SITE_DPO_NAME}}', siteConfig.dpoName)
     .replaceAll('{{SITE_DPO_EMAIL}}', siteConfig.dpoEmail);
