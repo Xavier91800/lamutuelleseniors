@@ -63,7 +63,9 @@ export const leadRequestSchema = z
     // Family composition (conditionally required for under-55, see superRefine)
     conjoint_present: z.union([z.literal(0), z.literal(1)]).optional(),
     conjoint_date_naissance: isoDate.optional(),
+    conjoint_regime: z.number().int().optional(),
     enfants_dates_naissance: z.array(isoDate).max(6).optional(),
+    enfants_regimes: z.array(z.number().int()).max(6).optional(),
 
     consent: consentSchema,
 
@@ -95,6 +97,24 @@ export const leadRequestSchema = z
           message: 'Champ requis pour les visiteurs de moins de 55 ans',
         });
       }
+    }
+    if (data.conjoint_present === 1 && !data.conjoint_date_naissance) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['conjoint_date_naissance'],
+        message: 'Date de naissance du conjoint requise',
+      });
+    }
+    if (
+      data.enfants_regimes &&
+      data.enfants_dates_naissance &&
+      data.enfants_regimes.length !== data.enfants_dates_naissance.length
+    ) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['enfants_regimes'],
+        message: 'Longueur de enfants_regimes doit correspondre à enfants_dates_naissance',
+      });
     }
   });
 

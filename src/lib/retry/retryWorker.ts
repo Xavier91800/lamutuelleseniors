@@ -46,19 +46,38 @@ function buildPayload(leadId: string, db: Database): LeadDeliveryPayload | null 
       email: lead.email ?? undefined,
       telephone: lead.telephone ?? undefined,
     },
-    qualifications: {
-      regime: lead.regime ?? undefined,
-      niveau_garantie: lead.niveau_garantie ?? undefined,
-      situation_actuelle: lead.situation_actuelle ?? undefined,
-      date_effet_souhaitee: lead.date_effet_souhaitee ?? undefined,
-      conjoint:
-        lead.conjoint_present === 1 && lead.conjoint_date_naissance
-          ? { date_naissance: lead.conjoint_date_naissance }
-          : undefined,
-      enfants_dates_naissance: lead.enfants_dates_naissance
+    qualifications: (() => {
+      const enfantsDates = lead.enfants_dates_naissance
         ? (JSON.parse(lead.enfants_dates_naissance as unknown as string) as string[])
-        : undefined,
-    },
+        : undefined;
+      const enfantsRegimes = (lead as unknown as { enfants_regimes?: string | null })
+        .enfants_regimes
+        ? (JSON.parse(
+            (lead as unknown as { enfants_regimes: string }).enfants_regimes
+          ) as number[])
+        : undefined;
+      const conjointRegime = (lead as unknown as { conjoint_regime?: number | null })
+        .conjoint_regime;
+      return {
+        regime: lead.regime ?? undefined,
+        niveau_garantie: lead.niveau_garantie ?? undefined,
+        situation_actuelle: lead.situation_actuelle ?? undefined,
+        date_effet_souhaitee: lead.date_effet_souhaitee ?? undefined,
+        conjoint:
+          lead.conjoint_present === 1 && lead.conjoint_date_naissance
+            ? {
+                date_naissance: lead.conjoint_date_naissance,
+                regime: conjointRegime ?? undefined,
+              }
+            : undefined,
+        enfants: enfantsDates
+          ? enfantsDates.map((d, i) => ({
+              date_naissance: d,
+              regime: enfantsRegimes?.[i] ?? undefined,
+            }))
+          : undefined,
+      };
+    })(),
     attribution: {
       source_path: lead.source_path,
       utm_source: lead.utm_source ?? undefined,

@@ -204,15 +204,15 @@ export class HttpLeadDeliveryClient implements LeadDeliveryClient {
       members.push({
         role: 'CONJOINT',
         age: ageFromDob(conjoint.date_naissance, this.now()),
-        regime: 'SECU_GENERAL',
+        regime: mapRegime(conjoint.regime),
       });
     }
 
-    for (const dob of payload.qualifications?.enfants_dates_naissance ?? []) {
+    for (const enfant of payload.qualifications?.enfants ?? []) {
       members.push({
         role: 'ENFANT',
-        age: ageFromDob(dob, this.now()),
-        regime: 'SECU_GENERAL',
+        age: ageFromDob(enfant.date_naissance, this.now()),
+        regime: mapRegime(enfant.regime),
       });
     }
 

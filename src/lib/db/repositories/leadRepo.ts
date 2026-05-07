@@ -46,7 +46,8 @@ export function insertLead(input: LeadInsert, db: Database = getDb()): { id: str
       id, nom, nom_normalized, prenom, prenom_normalized,
       date_naissance, code_postal, email, telephone,
       regime, niveau_garantie, situation_actuelle, date_effet_souhaitee,
-      conjoint_present, conjoint_date_naissance, enfants_count, enfants_dates_naissance,
+      conjoint_present, conjoint_date_naissance, conjoint_regime,
+      enfants_count, enfants_dates_naissance, enfants_regimes,
       campaign_id, age_at_submission,
       source_path, utm_source, utm_medium, utm_campaign, utm_term, utm_content,
       ip_address, user_agent
@@ -54,7 +55,8 @@ export function insertLead(input: LeadInsert, db: Database = getDb()): { id: str
       @id, @nom, @nom_normalized, @prenom, @prenom_normalized,
       @date_naissance, @code_postal, @email, @telephone,
       @regime, @niveau_garantie, @situation_actuelle, @date_effet_souhaitee,
-      @conjoint_present, @conjoint_date_naissance, @enfants_count, @enfants_dates_naissance,
+      @conjoint_present, @conjoint_date_naissance, @conjoint_regime,
+      @enfants_count, @enfants_dates_naissance, @enfants_regimes,
       @campaign_id, @age_at_submission,
       @source_path, @utm_source, @utm_medium, @utm_campaign, @utm_term, @utm_content,
       @ip_address, @user_agent
@@ -75,10 +77,12 @@ export function insertLead(input: LeadInsert, db: Database = getDb()): { id: str
     date_effet_souhaitee: input.date_effet_souhaitee ?? null,
     conjoint_present: input.conjoint_present ?? null,
     conjoint_date_naissance: input.conjoint_date_naissance ?? null,
+    conjoint_regime: input.conjoint_regime ?? null,
     enfants_count: input.enfants_dates_naissance?.length ?? 0,
     enfants_dates_naissance: input.enfants_dates_naissance
       ? JSON.stringify(input.enfants_dates_naissance)
       : null,
+    enfants_regimes: input.enfants_regimes ? JSON.stringify(input.enfants_regimes) : null,
     campaign_id: input.campaign_id,
     age_at_submission: input.age_at_submission,
     source_path: input.source_path,

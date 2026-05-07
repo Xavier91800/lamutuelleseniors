@@ -242,8 +242,11 @@ describe('HttpLeadDeliveryClient — payload mapping', () => {
       identity: { ...samplePayload.identity, date_naissance: '1985-06-01' },
       qualifications: {
         regime: 2,
-        conjoint: { date_naissance: '1987-09-15' },
-        enfants_dates_naissance: ['2018-01-20', '2020-04-30'],
+        conjoint: { date_naissance: '1987-09-15', regime: 1 },
+        enfants: [
+          { date_naissance: '2018-01-20', regime: 1 },
+          { date_naissance: '2020-04-30', regime: 4 },
+        ],
         situation_actuelle: 'aucune_mutuelle',
         date_effet_souhaitee: '2026-09-01',
         niveau_garantie: 'renforce',
@@ -257,7 +260,7 @@ describe('HttpLeadDeliveryClient — payload mapping', () => {
       { role: 'TITULAIRE', age: 40, regime: 'TNS' },
       { role: 'CONJOINT', age: 38, regime: 'SECU_GENERAL' },
       { role: 'ENFANT', age: 8, regime: 'SECU_GENERAL' },
-      { role: 'ENFANT', age: 6, regime: 'SECU_GENERAL' },
+      { role: 'ENFANT', age: 6, regime: 'ALSACE_MOSELLE' },
     ]);
 
     expect(body.mutuelle).toEqual({

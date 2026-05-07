@@ -25,7 +25,9 @@ export interface LeadInput {
 
   conjoint_present?: 0 | 1;
   conjoint_date_naissance?: string;
+  conjoint_regime?: number;
   enfants_dates_naissance?: string[];
+  enfants_regimes?: number[]; // parallèle à enfants_dates_naissance
 
   source_path?: string;
   utm_source?: string;

@@ -19,8 +19,8 @@ export interface LeadDeliveryPayload {
     niveau_garantie?: 'economique' | 'equilibre' | 'renforce' | 'premium';
     situation_actuelle?: 'aucune_mutuelle' | 'mutuelle_actuelle' | 'prefere_ne_pas_dire';
     date_effet_souhaitee?: string;
-    conjoint?: { date_naissance: string };
-    enfants_dates_naissance?: string[];
+    conjoint?: { date_naissance: string; regime?: number };
+    enfants?: { date_naissance: string; regime?: number }[];
   };
 
   attribution?: {

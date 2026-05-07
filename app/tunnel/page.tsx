@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
 import { AnimatePresence } from 'framer-motion';
 import { trackEvent } from '@/lib/analytics/plausible';
 import { FunnelLayout } from '@/components/tunnel/FunnelLayout';
@@ -21,7 +21,9 @@ type FormValues = {
   email?: string;
   telephone?: string;
   conjoint_present?: '0' | '1';
-  enfants_count?: string;
+  conjoint_date_naissance?: string;
+  conjoint_regime?: string;
+  enfants: { date_naissance: string; regime: string }[];
   // Enrichment (US3) — all optional
   regime?: string;
   niveau_garantie?: '' | 'economique' | 'equilibre' | 'renforce' | 'premium';
@@ -102,15 +104,18 @@ function TunnelForm() {
     getValues,
     setValue,
     trigger,
+    control,
   } = useForm<FormValues>({
     mode: 'onTouched',
     defaultValues: {
       conjoint_present: '0',
-      enfants_count: '0',
+      enfants: [],
       data_processing: false,
       courtier_transmission: false,
     },
   });
+
+  const enfantsArray = useFieldArray({ control, name: 'enfants' });
 
   // Hydrate from localStorage on mount.
   useEffect(() => {
@@ -195,12 +200,35 @@ function TunnelForm() {
         niveau_garantie: values.niveau_garantie ? values.niveau_garantie : undefined,
         situation_actuelle: values.situation_actuelle ? values.situation_actuelle : undefined,
         date_effet_souhaitee: values.date_effet_souhaitee || undefined,
-        conjoint_present: isUnder55
-          ? Number(values.conjoint_present ?? '0')
-          : Number(values.conjoint_present ?? '0'),
-        enfants_dates_naissance: isUnder55
-          ? Array.from({ length: Number(values.enfants_count ?? '0') }, () => '2010-01-01')
-          : undefined,
+        ...(() => {
+          const titulaireRegime = values.regime ? Number(values.regime) : 1;
+          const conjointPresent = (Number(values.conjoint_present ?? '0') as 0 | 1);
+          const enfants = (values.enfants ?? [])
+            .filter((e) => e.date_naissance)
+            .map((e) => ({
+              date_naissance: e.date_naissance,
+              regime: e.regime ? Number(e.regime) : titulaireRegime,
+            }));
+          return {
+            conjoint_present: conjointPresent,
+            conjoint_date_naissance:
+              conjointPresent === 1 && values.conjoint_date_naissance
+                ? values.conjoint_date_naissance
+                : undefined,
+            conjoint_regime:
+              conjointPresent === 1
+                ? values.conjoint_regime
+                  ? Number(values.conjoint_regime)
+                  : titulaireRegime
+                : undefined,
+            enfants_dates_naissance: enfants.length
+              ? enfants.map((e) => e.date_naissance)
+              : isUnder55
+              ? []
+              : undefined,
+            enfants_regimes: enfants.length ? enfants.map((e) => e.regime) : undefined,
+          };
+        })(),
         consent: {
           data_processing: values.data_processing,
           courtier_transmission: true as const,
@@ -416,14 +444,78 @@ function TunnelForm() {
             </label>
           </FieldGroup>
 
-          <div className="mt-4">
-            <Input
-              label="Nombre d'enfants à couvrir"
-              type="number"
-              min={0}
-              max={6}
-              {...register('enfants_count')}
-            />
+          {watch('conjoint_present') === '1' && (
+            <div className="mt-4 grid gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4 sm:grid-cols-2">
+              <Input
+                label="Date de naissance du conjoint"
+                type="date"
+                max={new Date().toISOString().slice(0, 10)}
+                {...register('conjoint_date_naissance')}
+              />
+              <Select
+                label="Régime du conjoint"
+                hint="Si différent du vôtre"
+                {...register('conjoint_regime')}
+                defaultValue=""
+              >
+                <option value="">— Comme le titulaire —</option>
+                <option value="1">Régime général</option>
+                <option value="2">Travailleur non salarié</option>
+                <option value="3">Exploitant agricole</option>
+                <option value="4">Alsace-Moselle</option>
+                <option value="5">Salarié agricole</option>
+              </Select>
+            </div>
+          )}
+
+          <div className="mt-6">
+            <FieldGroup legend="Enfants à couvrir">
+              {enfantsArray.fields.length === 0 && (
+                <p className="text-sm text-gray-600">Aucun enfant déclaré pour le moment.</p>
+              )}
+              {enfantsArray.fields.map((field, index) => (
+                <div
+                  key={field.id}
+                  className="grid gap-4 rounded-lg border border-gray-200 bg-gray-50 p-4 sm:grid-cols-[1fr_1fr_auto]"
+                >
+                  <Input
+                    label={`Enfant ${index + 1} — date de naissance`}
+                    type="date"
+                    max={new Date().toISOString().slice(0, 10)}
+                    {...register(`enfants.${index}.date_naissance`)}
+                  />
+                  <Select
+                    label="Régime"
+                    {...register(`enfants.${index}.regime`)}
+                    defaultValue=""
+                  >
+                    <option value="">— Comme le titulaire —</option>
+                    <option value="1">Régime général</option>
+                    <option value="2">Travailleur non salarié</option>
+                    <option value="3">Exploitant agricole</option>
+                    <option value="4">Alsace-Moselle</option>
+                    <option value="5">Salarié agricole</option>
+                  </Select>
+                  <button
+                    type="button"
+                    onClick={() => enfantsArray.remove(index)}
+                    className="self-end rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
+                    aria-label={`Retirer l'enfant ${index + 1}`}
+                  >
+                    Retirer
+                  </button>
+                </div>
+              ))}
+              {enfantsArray.fields.length < 6 && (
+                <button
+                  type="button"
+                  onClick={() => enfantsArray.append({ date_naissance: '', regime: '' })}
+                  className="inline-flex items-center gap-2 rounded-md border border-[var(--color-brand)] bg-white px-4 py-2 text-base font-semibold text-[var(--color-brand)] hover:bg-blue-50"
+                >
+                  + Ajouter un enfant
+                </button>
+              )}
+            </FieldGroup>
           </div>
 
           <NavButtons onBack={back} onNext={next} />
