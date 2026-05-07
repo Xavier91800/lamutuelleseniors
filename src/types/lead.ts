@@ -21,11 +21,14 @@ export interface LeadInput {
   regime?: number;
   niveau_garantie?: NiveauGarantie;
   situation_actuelle?: SituationActuelle;
+  insured_over_one_year?: 0 | 1; // pertinent uniquement si situation_actuelle === 'mutuelle_actuelle'
   date_effet_souhaitee?: string;
 
   conjoint_present?: 0 | 1;
   conjoint_date_naissance?: string;
+  conjoint_regime?: number;
   enfants_dates_naissance?: string[];
+  enfants_regimes?: number[]; // parallèle à enfants_dates_naissance
 
   source_path?: string;
   utm_source?: string;

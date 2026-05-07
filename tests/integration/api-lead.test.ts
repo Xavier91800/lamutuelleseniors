@@ -79,6 +79,7 @@ describe('POST /api/lead', () => {
     const body = baseBody({
       date_naissance: '1984-01-01',
       conjoint_present: 1,
+      conjoint_date_naissance: '1985-04-12',
       enfants_dates_naissance: [],
     });
     const res = await postLead(postRequest(body, '203.0.113.20'));
