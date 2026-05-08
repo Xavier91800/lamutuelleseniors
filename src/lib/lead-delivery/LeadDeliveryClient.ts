@@ -36,9 +36,13 @@ export interface LeadDeliveryPayload {
   consent: {
     granted_at: string;
     cgu_version: string;
+    cgu_body_hash?: string;
     pdc_version: string;
+    pdc_body_hash?: string;
     ip_address: string;
     user_agent: string;
+    consent_id?: string;
+    purpose_data_processing?: boolean;
   };
 }
 

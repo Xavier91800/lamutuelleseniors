@@ -38,7 +38,22 @@ interface PartnerLeadRequest {
   productType: ProductType;
   externalSource: string;
   metaRoutingRuleId?: string;
-  consentProof: { createdTime: string; formId: string; snapshotUrl?: string };
+  consentProof: {
+    createdTime: string;
+    formId: string;
+    snapshotUrl?: string;
+    // Champs additionnels (extension RGPD) — émis seulement si
+    // fullConsentProof=true ET que le partenaire a étendu son schéma.
+    consentReference?: string;
+    ipAddress?: string;
+    userAgent?: string;
+    cguVersion?: string;
+    cguBodyHash?: string;
+    pdcVersion?: string;
+    pdcBodyHash?: string;
+    purposeDataProcessing?: boolean;
+    purposeCourtierTransmission?: boolean;
+  };
   prospect: {
     lastName: string;
     firstName: string;
@@ -81,6 +96,14 @@ export interface HttpLeadDeliveryClientConfig {
   formId: string;
   routingRules: RoutingRuleMap;
   snapshotBaseUrl?: string;
+  /**
+   * Si true, étend le bloc consentProof envoyé au partenaire avec les
+   * champs RGPD additionnels (consentReference, ipAddress, userAgent,
+   * cgu/pdc body hashes, granular purposes). Default false tant que le
+   * partenaire CRMLeads n'a pas étendu son schéma zod côté /partner/leads,
+   * sinon ces champs seraient rejetés en 400 VALIDATION_ERROR.
+   */
+  fullConsentProof?: boolean;
   fetchImpl?: typeof fetch;
   now?: () => Date;
 }
@@ -128,6 +151,7 @@ export class HttpLeadDeliveryClient implements LeadDeliveryClient {
         under55_solo: optional('LEAD_DELIVERY_ROUTING_RULE_ID_UNDER55_SOLO'),
       },
       snapshotBaseUrl: optional('LEAD_DELIVERY_SNAPSHOT_BASE_URL'),
+      fullConsentProof: optional('LEAD_DELIVERY_FULL_CONSENT_PROOF') === 'true',
     });
   }
 
@@ -237,6 +261,25 @@ export class HttpLeadDeliveryClient implements LeadDeliveryClient {
 
     if (this.cfg.snapshotBaseUrl) {
       body.consentProof.snapshotUrl = `${this.cfg.snapshotBaseUrl.replace(/\/$/, '')}/${payload.lead_id}`;
+    }
+
+    // Extension RGPD du consentProof — n'envoyer que si le partenaire a étendu
+    // son schéma (sinon il rejette en 400 VALIDATION_ERROR sur les champs
+    // inconnus). Activable via LEAD_DELIVERY_FULL_CONSENT_PROOF=true.
+    if (this.cfg.fullConsentProof) {
+      const c = payload.consent;
+      body.consentProof.consentReference = c.consent_id ?? payload.lead_id;
+      body.consentProof.ipAddress = c.ip_address;
+      body.consentProof.userAgent = c.user_agent;
+      body.consentProof.cguVersion = c.cgu_version;
+      if (c.cgu_body_hash) body.consentProof.cguBodyHash = c.cgu_body_hash;
+      body.consentProof.pdcVersion = c.pdc_version;
+      if (c.pdc_body_hash) body.consentProof.pdcBodyHash = c.pdc_body_hash;
+      if (c.purpose_data_processing !== undefined) {
+        body.consentProof.purposeDataProcessing = c.purpose_data_processing;
+      }
+      // Toujours true par construction côté serveur (sinon le lead n'a pas été créé)
+      body.consentProof.purposeCourtierTransmission = true;
     }
 
     const routingRuleId = this.cfg.routingRules[payload.campaign_id];

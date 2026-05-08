@@ -1,6 +1,7 @@
 import type { Database } from 'better-sqlite3';
 import { findByKindAndVersion, getPublished } from '@/lib/db/repositories/legalDocRepo';
 import { insertConsent } from '@/lib/db/repositories/consentRepo';
+import { appendConsentAudit } from '@/lib/consent/audit';
 
 export interface ConsentInput {
   lead_id: string;
@@ -31,7 +32,7 @@ export function recordConsent(input: ConsentInput, db: Database): { id: string }
     throw new ConsentOutdatedError('pdc');
   }
 
-  return insertConsent(
+  const result = insertConsent(
     {
       lead_id: input.lead_id,
       data_processing: input.data_processing,
@@ -42,4 +43,22 @@ export function recordConsent(input: ConsentInput, db: Database): { id: string }
     },
     db
   );
+
+  // Append-only audit trail for RGPD compliance — the SQLite row is the source
+  // of truth, this file is an independent durable artefact useful for audits
+  // and litigation.
+  appendConsentAudit({
+    consent_id: result.id,
+    lead_id: input.lead_id,
+    ip_address: input.ip_address,
+    user_agent: input.user_agent,
+    cgu_version: cgu.version,
+    cgu_body_hash: cgu.body_hash,
+    pdc_version: pdc.version,
+    pdc_body_hash: pdc.body_hash,
+    purpose_data_processing: input.data_processing,
+    purpose_courtier_transmission: true,
+  });
+
+  return result;
 }
