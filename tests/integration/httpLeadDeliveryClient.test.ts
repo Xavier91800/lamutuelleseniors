@@ -49,6 +49,7 @@ function buildClient(
   overrides: Partial<{
     routingRules: Partial<Record<'senior' | 'under55_family' | 'under55_solo', string>>;
     snapshotBaseUrl: string;
+    fullConsentProof: boolean;
   }> = {}
 ) {
   const stub = makeStubFetch(responses);
@@ -64,6 +65,7 @@ function buildClient(
       under55_solo: 'cm_solo_rule',
     },
     snapshotBaseUrl: overrides.snapshotBaseUrl,
+    fullConsentProof: overrides.fullConsentProof,
     fetchImpl: stub.fetch,
     now: () => FROZEN_NOW,
   });
@@ -358,6 +360,65 @@ describe('HttpLeadDeliveryClient — consentProof.createdTime normalization', ()
     });
     const body = calls[1].body as { consentProof: { createdTime: string } };
     expect(body.consentProof.createdTime).toBe('2026-05-07T10:00:00.000Z');
+  });
+});
+
+describe('HttpLeadDeliveryClient — extended consentProof (RGPD)', () => {
+  it('omits the extended fields when fullConsentProof is not enabled (default)', async () => {
+    const { client, calls } = buildClient([
+      tokenOk,
+      { status: 201, body: { success: true, data: { leadId: 'cm_consent_default' } } },
+    ]);
+    await client.deliver(samplePayload);
+    const body = calls[1].body as { consentProof: Record<string, unknown> };
+    expect(body.consentProof.consentReference).toBeUndefined();
+    expect(body.consentProof.ipAddress).toBeUndefined();
+    expect(body.consentProof.cguVersion).toBeUndefined();
+  });
+
+  it('emits the full consentProof block when fullConsentProof=true', async () => {
+    const { client, calls } = buildClient(
+      [tokenOk, { status: 201, body: { success: true, data: { leadId: 'cm_consent_full' } } }],
+      { fullConsentProof: true }
+    );
+    await client.deliver({
+      ...samplePayload,
+      consent: {
+        ...samplePayload.consent,
+        consent_id: 'consent_abc123',
+        cgu_body_hash: 'a'.repeat(64),
+        pdc_body_hash: 'b'.repeat(64),
+        purpose_data_processing: true,
+      },
+    });
+    const body = calls[1].body as { consentProof: Record<string, unknown> };
+    expect(body.consentProof).toMatchObject({
+      consentReference: 'consent_abc123',
+      ipAddress: '127.0.0.1',
+      userAgent: 'vitest',
+      cguVersion: '1.1',
+      cguBodyHash: 'a'.repeat(64),
+      pdcVersion: '1.2',
+      pdcBodyHash: 'b'.repeat(64),
+      purposeDataProcessing: true,
+      purposeCourtierTransmission: true,
+    });
+    // siteConfig.baseUrl is https://www.la-mutuelle-seniors.fr by default
+    expect(body.consentProof.cguUrl).toMatch(/^https:\/\/.+\/conditions-generales$/);
+    expect(body.consentProof.pdcUrl).toMatch(/^https:\/\/.+\/politique-de-confidentialite$/);
+  });
+
+  it('falls back to lead_id as consentReference when consent_id is missing', async () => {
+    const { client, calls } = buildClient(
+      [tokenOk, { status: 201, body: { success: true, data: { leadId: 'cm_consent_fallback' } } }],
+      { fullConsentProof: true }
+    );
+    await client.deliver({
+      ...samplePayload,
+      consent: { ...samplePayload.consent }, // no consent_id field
+    });
+    const body = calls[1].body as { consentProof: { consentReference: string } };
+    expect(body.consentProof.consentReference).toBe(samplePayload.lead_id);
   });
 });
 

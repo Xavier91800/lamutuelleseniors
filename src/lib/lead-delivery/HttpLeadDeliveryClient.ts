@@ -5,6 +5,7 @@ import type {
   LeadDeliveryPayload,
 } from './LeadDeliveryClient';
 import { logger, redactPii } from '@/lib/logging/logger';
+import { siteConfig } from '@/config/site';
 
 /**
  * Client HTTP pour la plateforme partenaire CRMLeads.
@@ -49,8 +50,10 @@ interface PartnerLeadRequest {
     userAgent?: string;
     cguVersion?: string;
     cguBodyHash?: string;
+    cguUrl?: string;
     pdcVersion?: string;
     pdcBodyHash?: string;
+    pdcUrl?: string;
     purposeDataProcessing?: boolean;
     purposeCourtierTransmission?: boolean;
   };
@@ -280,6 +283,12 @@ export class HttpLeadDeliveryClient implements LeadDeliveryClient {
       }
       // Toujours true par construction côté serveur (sinon le lead n'a pas été créé)
       body.consentProof.purposeCourtierTransmission = true;
+      // URL canoniques des documents légaux — exigées en https par le partenaire.
+      if (siteConfig.baseUrl.startsWith('https://')) {
+        const base = siteConfig.baseUrl.replace(/\/$/, '');
+        body.consentProof.cguUrl = `${base}/conditions-generales`;
+        body.consentProof.pdcUrl = `${base}/politique-de-confidentialite`;
+      }
     }
 
     const routingRuleId = this.cfg.routingRules[payload.campaign_id];
