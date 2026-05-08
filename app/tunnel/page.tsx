@@ -264,7 +264,8 @@ function TunnelForm() {
         } catch {
           /* ignore */
         }
-        router.push('/tunnel/confirmation');
+        const ref = data.lead_id ? `?ref=${encodeURIComponent(data.lead_id)}` : '';
+        router.push(`/tunnel/confirmation${ref}`);
         return;
       }
       if (res.status === 429) {

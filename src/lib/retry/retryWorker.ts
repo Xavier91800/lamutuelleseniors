@@ -93,9 +93,18 @@ function buildPayload(leadId: string, db: Database): LeadDeliveryPayload | null 
     consent: {
       granted_at: consent?.granted_at ?? lead.submitted_at,
       cgu_version: cguDoc?.version ?? consent?.cgu_version ?? '1.0',
+      cgu_body_hash: cguDoc?.body_hash ?? consent?.cgu_body_hash ?? undefined,
       pdc_version: pdcDoc?.version ?? consent?.pdc_version ?? '1.0',
+      pdc_body_hash: pdcDoc?.body_hash ?? consent?.pdc_body_hash ?? undefined,
       ip_address: consent?.ip_address ?? lead.ip_address,
       user_agent: consent?.user_agent ?? lead.user_agent,
+      consent_id: consent?.id ?? undefined,
+      purpose_data_processing:
+        consent?.purpose_data_processing === 1
+          ? true
+          : consent?.purpose_data_processing === 0
+            ? false
+            : undefined,
     },
   };
 }
